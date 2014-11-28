@@ -8,8 +8,9 @@ plays against the AI. Every player has a castle and castles have durability poin
 players’ health. The goal of the game is to reduce opponent's castle durability to zero.
 
 ####Reports
-***
 [Analysis Report](https://github.com/Shathra/cs319-element-wars/raw/master/reports/AnalysisReportGroup8.pdf)
 ***
 ####Useful Links  
+[Course Page](http://www.cs.bilkent.edu.tr/~calkan/teaching/cs319/index.html)  
+[Project Wiki](https://github.com/Shathra/cs319-element-wars/wiki)  
 [A tutorial about Javadoc](http://docstore.mik.ua/orelly/java-ent/jnut/ch07_03.htm)
