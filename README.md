@@ -7,6 +7,9 @@ Bilkent CS319 2014 Fall Group 8 Term Project
 plays against the AI. Every player has a castle and castles have durability point representing
 players’ health. The goal of the game is to reduce opponent's castle durability to zero.
 
-Reports
------------------
+####Reports
+***
 [Analysis Report](https://github.com/Shathra/cs319-element-wars/raw/master/reports/AnalysisReportGroup8.pdf)
+***
+####Useful Links  
+[A tutorial about Javadoc](http://docstore.mik.ua/orelly/java-ent/jnut/ch07_03.htm)
