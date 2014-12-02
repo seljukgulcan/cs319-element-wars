@@ -9,6 +9,7 @@ players’ health. The goal of the game is to reduce opponent's castle durabilit
 
 ####Reports
 [Analysis Report](https://github.com/Shathra/cs319-element-wars/raw/master/reports/AnalysisReportGroup8.pdf)
+[Design Report](https://github.com/Shathra/cs319-element-wars/raw/master/reports/DesignReportGroup8.pdf)
 ***
 ####Useful Links  
 [Course Page](http://www.cs.bilkent.edu.tr/~calkan/teaching/cs319/index.html)  
