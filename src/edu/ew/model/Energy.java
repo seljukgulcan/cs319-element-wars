@@ -6,4 +6,4 @@ package edu.ew.model;
  * @author shathra
  *
  */
-public enum Energy { PURE, AIR, EARTH, FIRE, WATER};
+public enum Energy { PURE, AIR, EARTH, FIRE, WATER, TRIVIAL};

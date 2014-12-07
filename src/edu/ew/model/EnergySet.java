@@ -14,6 +14,7 @@ public class EnergySet {
 	private int earth;
 	private int fire;
 	private int water;
+	private int trivial;
 	
 	public EnergySet() {
 		
@@ -28,6 +29,7 @@ public class EnergySet {
 	
 	public EnergySet( int noOfAirEnergy, int noOfEarthEnergy, int noOfFireEnergy, int noOfWaterEnergy) {
 		
+		setTrivial( 0);
 		setPure( 0);
 		setAir( noOfAirEnergy);
 		setEarth( noOfEarthEnergy);
@@ -37,11 +39,33 @@ public class EnergySet {
 	
 	public EnergySet( int noOfAirEnergy, int noOfEarthEnergy, int noOfFireEnergy, int noOfWaterEnergy, int noOfPureEnergy) {
 		
+		setTrivial( 0);
 		setPure( noOfPureEnergy);
 		setAir( noOfAirEnergy);
 		setEarth( noOfEarthEnergy);
 		setFire( noOfFireEnergy);
 		setWater( noOfWaterEnergy);
+	}
+	
+	public EnergySet( int noOfAirEnergy, int noOfEarthEnergy, int noOfFireEnergy, int noOfWaterEnergy, int noOfPureEnergy, 
+					  int noOfTrivialEnergy) {
+		
+		setPure( noOfPureEnergy);
+		setAir( noOfAirEnergy);
+		setEarth( noOfEarthEnergy);
+		setFire( noOfFireEnergy);
+		setWater( noOfWaterEnergy);
+		setTrivial( noOfTrivialEnergy);
+	}
+	
+	public EnergySet( EnergySet other) {
+		
+		setPure( other.getPure());
+		setAir( other.getAir());
+		setEarth( other.getEarth());
+		setFire( other.getFire());
+		setWater( other.getWater());
+		setTrivial( other.getTrivial());
 	}
 	
 	public int getPure() {
@@ -75,6 +99,14 @@ public class EnergySet {
 	public void setFire(int fire) {
 		this.fire = fire;
 	}
+	
+	public int getTrivial() {
+		return trivial;
+	}
+	
+	public void setTrivial( int trivial) {
+		this.trivial = trivial;
+	}
 
 	public int getWater() {
 		return water;
@@ -104,6 +136,10 @@ public class EnergySet {
 			setPure( no);
 			break;
 			
+		case TRIVIAL:
+			setTrivial( no);
+			break;
+			
 		case WATER:
 			setWater( no);
 			break;
@@ -116,6 +152,7 @@ public class EnergySet {
 	public void clear() {
 		
 		setPure( 0);
+		setTrivial( 0);
 		setAir( 0);
 		setEarth( 0);
 		setFire( 0);
@@ -128,7 +165,8 @@ public class EnergySet {
 								Math.abs( getEarth() - other.getEarth()),
 								Math.abs( getFire() - other.getFire()), 
 								Math.abs( getWater() - other.getWater()), 
-								Math.abs( getPure() - other.getPure())
+								Math.abs( getPure() - other.getPure()),
+								Math.abs( getTrivial() - other.getTrivial())
 							);
 	}
 	
@@ -149,16 +187,33 @@ public class EnergySet {
 		if( getPure() < other.getPure())
 			return false;
 		
+		if( getTrivial() < other.getTrivial())
+			return false;
+		
 		return true;
+	}
+	
+	boolean canPay( EnergySet other) {
+		
+		//TODO: complete method
+		return false;
 	}
 	
 	int getConvertCost( EnergySet other) {
 		
+		//TODO: complete method
 		return 0;
 	}
 	
 	int convert( EnergySet other) {
 		
+		//TODO: complete method
 		return 0;
+	}
+	
+	EnergySet copy() {
+		
+		EnergySet copied = new EnergySet( this);
+		return copied;
 	}
 }
