@@ -1,12 +1,14 @@
 package edu.ew.model;
 
+import java.util.Observable;
+
 /**
  * This class represents single cards.
  * 
  * @author Selcuk Gulcan
  *
  */
-public class Card {
+public class Card extends Observable{
 
 	private int			id;
 	private String 		name;
@@ -26,6 +28,20 @@ public class Card {
 		setName( name);
 		setCost( cost);
 		setEffect( effect);
+	}
+	
+	/**
+	 * 
+	 * @param id The id of the card.
+	 * @param name The name of the card.
+	 * @param cost Cost of playing card into the board.
+	 */
+	public Card( int id, String name, EnergySet cost) {
+		
+		setId( id);
+		setName( name);
+		setCost( cost);
+		setEffect( null);
 	}
 
 	/**
@@ -102,5 +118,20 @@ public class Card {
 	public void setEffect(Effect effect) {
 		
 		this.effect = effect;
+	}
+	
+	public String toString() {
+		
+		String stringToReturn = "";
+		stringToReturn += "Id: " + id + "\n";
+		stringToReturn += "Name: " + name + "\n";
+		stringToReturn += "Cost: \n\t\t" + cost.getAir() + " air energy" + "\n";
+		stringToReturn += "\t\t" + cost.getEarth() + " earth energy" + "\n";
+		stringToReturn += "\t\t" + cost.getFire() + " fire energy" + "\n";
+		stringToReturn += "\t\t" + cost.getWater() + " water energy" + "\n";
+		stringToReturn += "\t\t" + cost.getPure() + " pure energy" + "\n";
+		stringToReturn += "\t\t" + cost.getTrivial() + " trivial energy" + "\n";
+		
+		return stringToReturn;
 	}
 }

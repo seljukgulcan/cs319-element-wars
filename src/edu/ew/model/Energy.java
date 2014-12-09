@@ -3,7 +3,7 @@ package edu.ew.model;
 /**
  * Enumeration of energy types.
  * 
- * @author shathra
+ * @author Selcuk Gulcan
  *
  */
-public enum Energy { PURE, AIR, EARTH, FIRE, WATER, TRIVIAL};
+public enum Energy { AIR, EARTH, FIRE, WATER, PURE, TRIVIAL};

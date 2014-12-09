@@ -1,5 +1,7 @@
 package edu.ew.model;
 
+import java.util.Observable;
+
 /**
  * 
  * TODO:Add description
@@ -7,7 +9,7 @@ package edu.ew.model;
  * @author Selcuk Gulcan
  *
  */
-public class EnergyPalette {
+public class EnergyPalette extends Observable{
 
 	private EnergySet maxEnergies;
 	private EnergySet activeEnergies;

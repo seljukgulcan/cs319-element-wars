@@ -1,11 +1,13 @@
 package edu.ew.model;
 
+import java.util.Observable;
+
 /**
  * TODO:Add description
  * @author Selcuk Gulcan
  *
  */
-public class Character {
+public class Character extends Observable{
 
 	private String name;
 	private int attack;

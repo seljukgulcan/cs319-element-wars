@@ -10,11 +10,17 @@ package edu.ew.model;
 public class CharacterCard extends Card {
 
 	private int attack;
-	private int defence;
 	private int health;
 	
 	public CharacterCard(int id, String name, EnergySet cost, Effect effect, int attack, int health) {
 		super(id, name, cost, effect);
+		setHealth( health);
+		setAttack( attack);
+	}
+	
+	public CharacterCard( int id, String name, EnergySet cost, int attack, int health) {
+		
+		super( id, name, cost);
 		setHealth( health);
 		setAttack( attack);
 	}
@@ -27,20 +33,22 @@ public class CharacterCard extends Card {
 		this.attack = attack;
 	}
 
-	public int getDefence() {
-		return defence;
-	}
-
-	public void setDefence(int defence) {
-		this.defence = defence;
-	}
-
 	public int getHealth() {
 		return health;
 	}
 
 	public void setHealth(int health) {
 		this.health = health;
-		setDefence( health);
+	}
+	
+	@Override
+	public String toString() {
+		
+		String stringToReturn;
+		stringToReturn = super.toString();
+		stringToReturn += "attack: " + attack + "\n";
+		stringToReturn += "health: " + health + "\n";
+		
+		return stringToReturn;
 	}
 }

@@ -1,0 +1,7 @@
+{
+	"is-spell":false,
+	"name":"Laboratory Mouse",
+	"attack":1,
+	"health":1,
+	"cost":[0,0,0,0,0,1]
+}
