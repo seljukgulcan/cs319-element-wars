@@ -2,6 +2,8 @@ package edu.ew.model;
 
 import java.util.ArrayList;
 
+import edu.ew.model.Player.Side;
+
 /**
  * TODO: Add description
  * 
@@ -21,8 +23,64 @@ public class Board {
 		
 		setWhitePlayer( whitePlayer);
 		setBlackPlayer( blackPlayer);
-		whiteSide = new ArrayList<Character>( 8);
-		blackSide = new ArrayList<Character>( 8);
+		whiteSide = new ArrayList<Character>( SIZE);
+		blackSide = new ArrayList<Character>( SIZE);
+		
+		for( int i = 0; i < SIZE; i++) {
+			
+			whiteSide.add( null);
+			blackSide.add( null);
+		}
+	}
+	
+	public boolean putCharacter( Character character, int position, Side side) {
+		
+		if( getSide( side).get( position) != null)
+			return false;
+		
+		getSide( side).set( position, character);
+		return true;
+	}
+	
+	public boolean removeCharacter( int position, Side side) {
+		
+		if( getSide( side).get( position) == null)
+			return false;
+		
+		getSide( side).set( position, null);
+		return true;
+	}
+	
+	public boolean swapCharacters( int pos1, int pos2, Side side) {
+		
+		ArrayList<Character> playerSide = getSide( side);
+		if( playerSide.get( pos1) == null || playerSide.get( pos2) == null)
+			return false;
+		
+		Character temp = playerSide.get( pos1);
+		playerSide.set( pos1, playerSide.get( pos2));
+		playerSide.set( pos2, temp);
+		return true;
+	}
+	
+	public Character getCharacter( int position, Side side) {
+		
+		return getSide( side).get( position);
+	}
+	
+	public ArrayList<Character> getSide( Side side) {
+
+		switch( side) {
+		
+		case BLACK:
+			return blackSide;
+			
+		case WHITE:
+			return whiteSide;
+			
+		default:
+			return null;
+		}
 	}
 
 	public Player getWhitePlayer() {

@@ -7,6 +7,8 @@ package edu.ew.model;
  * TODO: Add description
  */
 public class Player {
+	
+	public static enum Side { WHITE, BLACK};
 
 	private String name;
 	private Deck   deck;
