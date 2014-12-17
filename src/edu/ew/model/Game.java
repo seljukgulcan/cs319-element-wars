@@ -2,6 +2,8 @@ package edu.ew.model;
 
 import java.util.Observable;
 
+import edu.ew.model.Player.Side;
+
 /**
  * TODO: Add description
  * 
@@ -10,8 +12,10 @@ import java.util.Observable;
  */
 public class Game extends Observable{
 
-	private static final String DEFAULT_WHITE_NAME = "Yin";
-	private static final String DEFAULT_BLACK_NAME = "Yang";
+	/*private static final String DEFAULT_WHITE_NAME = "Yin";
+	private static final String DEFAULT_BLACK_NAME = "Yang";*/
+	private static final int DEF_HEALTH = 20;
+	private static final int STARTING_HAND_SIZE = 5;
 	
 	private Player playerWhite;
 	private Player playerBlack;
@@ -20,7 +24,7 @@ public class Game extends Observable{
 	private boolean gameStarted;
 	private boolean gameEnded;
 	
-	public Game() {
+	/*public Game() {
 		
 		setPlayerWhite( new Player( DEFAULT_WHITE_NAME));
 		setPlayerBlack( new Player( DEFAULT_BLACK_NAME));
@@ -38,7 +42,7 @@ public class Game extends Observable{
 		board = new Board( this.playerWhite, this.playerBlack);
 		setGameStarted( false);
 		setGameEnded( false);
-	}
+	}*/
 	
 	public Game( Player playerWhite, Player playerBlack) {
 		
@@ -49,7 +53,31 @@ public class Game extends Observable{
 		setGameStarted( false);
 		setGameEnded( false);
 	}
+	
+	public boolean startGame() {
+		
+		if( isGameStarted())
+			return false;
+		
+		getPlayerWhite().setHealth( DEF_HEALTH);
+		getPlayerBlack().setHealth( DEF_HEALTH);
+		getPlayerWhite().shuffleDeck();
+		getPlayerBlack().shuffleDeck();
+		getPlayerWhite().draw( STARTING_HAND_SIZE);
+		getPlayerBlack().draw( STARTING_HAND_SIZE);
+		setTurnNo( 0);
+		return true;
+	}
+	
+	public Side turnOf() {
+		
+		if( !isGameStarted() || isGameEnded())
+			return null;
+		
+		return getTurnNo() % 2 == 0 ? Side.WHITE : Side.BLACK;
+	}
 
+	//TRIVIAL METHODS
 	public Player getPlayerWhite() {
 		return playerWhite;
 	}
@@ -72,6 +100,11 @@ public class Game extends Observable{
 
 	public boolean isGameEnded() {
 		return gameEnded;
+	}
+	
+	public void setTurnNo( int turnNo) {
+		
+		this.turnNo = turnNo;
 	}
 
 	public void setPlayerWhite(Player playerWhite) {

@@ -1,5 +1,12 @@
 package edu.ew.controller;
 
-public class BoardManager {
+import edu.ew.model.ModelConnector;
+
+public class BoardManager extends Manager {
+
+	public BoardManager(ModelConnector model) {
+		super(model);
+		// TODO Auto-generated constructor stub
+	}
 
 }

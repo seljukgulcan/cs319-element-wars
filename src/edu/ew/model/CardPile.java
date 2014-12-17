@@ -1,7 +1,8 @@
 package edu.ew.model;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Observable;
+import java.util.Stack;
 
 /**
  * Represents a pile cards.
@@ -11,18 +12,34 @@ import java.util.Observable;
  */
 public class CardPile extends Observable{
 
-	private ArrayList<Card> cards;
+	private Stack<Card> cards;
 	
 	public CardPile() {
 		
-		cards = new ArrayList<Card>();
+		cards = new Stack<Card>();
 	}
 	
-	public ArrayList<Card> getCards() {
+	public void shuffle() {
+		
+		Collections.shuffle( cards);
+	}
+	
+	public Card draw() {
+		
+		return cards.pop();
+	}
+	
+	public void add( Card card) {
+		
+		cards.push( card);
+	}
+	
+	//TRIVIAL METHODS
+	public Stack<Card> getCards() {
 		return cards;
 	}
 
-	public void setCards(ArrayList<Card> cards) {
+	public void setCards(Stack<Card> cards) {
 		this.cards = cards;
 	}
 

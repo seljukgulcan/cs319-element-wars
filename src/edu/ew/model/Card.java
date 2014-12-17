@@ -43,6 +43,14 @@ public class Card extends Observable{
 		setCost( cost);
 		setEffect( null);
 	}
+	
+	public Card copy() {
+		
+		Card card;
+		card = new Card( id, name, cost.copy(), effect == null ? null : effect.copy());
+		
+		return card;
+	}
 
 	/**
 	 * 

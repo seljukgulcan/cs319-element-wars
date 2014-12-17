@@ -1,5 +1,12 @@
 package edu.ew.controller;
 
-public class CombatManager {
+import edu.ew.model.ModelConnector;
+
+public class CombatManager extends Manager {
+
+	public CombatManager(ModelConnector model) {
+		super(model);
+		// TODO Auto-generated constructor stub
+	}
 
 }
