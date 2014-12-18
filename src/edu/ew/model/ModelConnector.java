@@ -28,15 +28,48 @@ public class ModelConnector {
 		setAccount( account);
 		activeGame = null;
 	}
+	
+	public Hand getHand( Side side) {
+		
+		switch( side) {
+		case BLACK:
+			return activeGame.getPlayerBlack().getHand();
+		case WHITE:
+			return activeGame.getPlayerWhite().getHand();
+		}
+		
+		return null;
+	}
 
-	public void setGame() throws FileNotFoundException {
+	public void createGame() throws FileNotFoundException {
 		
 		setActiveGame( new Game( account.createPlayer( Side.WHITE), new AIDump( Side.BLACK)));
 	}
 	
-	public void setGame( AI ai) {
+	public void createGame( AI ai) {
 		
 		setActiveGame( new Game( account.createPlayer( Side.WHITE), ai));
+	}
+	
+	public boolean startGame() {
+		
+		return activeGame.startGame();
+	}
+	
+	public boolean isGameStarted() {
+		
+		if( activeGame == null)
+			return false;
+		
+		return activeGame.isGameStarted();
+	}
+	
+	public boolean isGameEnded() {
+		
+		if( activeGame == null)
+			return false;
+		
+		return activeGame.isGameEnded();
 	}
 	
 	//TRIVIAL METHODS

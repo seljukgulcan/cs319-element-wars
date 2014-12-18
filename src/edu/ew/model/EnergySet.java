@@ -216,4 +216,15 @@ public class EnergySet {
 		EnergySet copied = new EnergySet( this);
 		return copied;
 	}
+	
+	@Override
+	public String toString() {
+		
+		String stringToReturn = "";
+		
+		stringToReturn = "[" + air + ", " + earth + ", " + fire + ", " + water + ", " + pure
+				+ ", " + trivial + "]";
+		
+		return stringToReturn;
+	}
 }

@@ -10,10 +10,10 @@ import java.util.Observable;
  */
 public class Card extends Observable{
 
-	private int			id;
-	private String 		name;
-	private EnergySet	cost;
-	private Effect		effect;
+	protected int			id;
+	protected String 		name;
+	protected EnergySet		cost;
+	protected Effect		effect;
 	
 	/**
 	 * 
@@ -129,6 +129,13 @@ public class Card extends Observable{
 	}
 	
 	public String toString() {
+		
+		String stringToReturn = "(" + id + ")" + name;
+		
+		return stringToReturn;
+	}
+	
+	public String detailedToString() {
 		
 		String stringToReturn = "";
 		stringToReturn += "Id: " + id + "\n";

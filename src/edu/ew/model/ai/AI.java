@@ -8,8 +8,7 @@ import edu.ew.model.Player;
 public class AI extends Player{
 
 	public AI(Side side) throws FileNotFoundException {
-		super(side);
-		setDeck( Deck.getDefaultDeck());
+		super(side, Deck.getDefaultDeck());
 	}
 
 }

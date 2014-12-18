@@ -4,7 +4,7 @@ import edu.ew.model.ModelConnector;
 
 public class Manager {
 
-	private ModelConnector model;
+	protected ModelConnector model;
 	
 	public Manager( ModelConnector model) {
 		

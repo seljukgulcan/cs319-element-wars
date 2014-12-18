@@ -57,4 +57,14 @@ public class EnergyPalette extends Observable{
 		
 		this.activeEnergies = activeEnergies;
 	}
+	
+	public String toString() {
+		
+		String stringToReturn = "";
+		
+		stringToReturn += activeEnergies.toString() + "\n";
+		stringToReturn += maxEnergies.toString();
+		
+		return stringToReturn;		
+	}
 }

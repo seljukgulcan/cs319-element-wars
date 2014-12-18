@@ -16,7 +16,7 @@ public class Player {
 	private Hand	hand;
 	private EnergyPalette energyPalette;
 	
-	public Player( Side side) {
+	private Player( Side side) {
 		
 		deck = null;
 		setSide( side);

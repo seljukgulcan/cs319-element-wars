@@ -1,5 +1,7 @@
 package edu.ew.controller;
 
+import java.io.FileNotFoundException;
+
 import edu.ew.model.ModelConnector;
 
 public class GameManager extends Manager{
@@ -9,8 +11,6 @@ public class GameManager extends Manager{
 	CombatManager 	combatManager;
 	TurnManager 	turnManager;
 	
-	ModelConnector	model;
-	
 	public GameManager( ModelConnector model) { 
 		
 		super( model);
@@ -18,5 +18,14 @@ public class GameManager extends Manager{
 		this.boardManager 	= new BoardManager( model);
 		this.combatManager 	= new CombatManager( model);
 		this.turnManager 	= new TurnManager( model);
+	}
+	
+	public boolean startGame() throws FileNotFoundException {
+		
+		if( model.isGameStarted() && !model.isGameEnded())
+			return false;
+		
+		model.createGame();
+		return model.startGame();
 	}
 }

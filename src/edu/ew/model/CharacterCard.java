@@ -25,6 +25,15 @@ public class CharacterCard extends Card {
 		setAttack( attack);
 	}
 
+	public CharacterCard copy() {
+		
+		CharacterCard card;
+		card = new CharacterCard( id, name, cost.copy(), effect == null ? null : effect.copy(), attack, health);
+		
+		return card;
+	}
+	
+	//TRIVIAL METHODS
 	public int getAttack() {
 		return attack;
 	}
@@ -45,10 +54,13 @@ public class CharacterCard extends Card {
 	public String toString() {
 		
 		String stringToReturn;
-		stringToReturn = super.toString();
-		stringToReturn += "attack: " + attack + "\n";
-		stringToReturn += "health: " + health + "\n";
+		stringToReturn = "[" + attack + ", " + health + "]" + super.toString();
 		
 		return stringToReturn;
 	}
+	
+	/*public void speak() {
+		
+		System.out.println( "echo");
+	}*/
 }
