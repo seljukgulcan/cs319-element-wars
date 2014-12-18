@@ -2,7 +2,7 @@ package edu.ew.controller;
 
 import java.io.FileNotFoundException;
 
-import edu.ew.model.Card;
+import edu.ew.model.CharacterCard;
 import edu.ew.model.ModelConnector;
 
 public class GameManager extends Manager{
@@ -33,14 +33,43 @@ public class GameManager extends Manager{
 		return true;
 	}
 	
-	public boolean playCard( int handPos) {
+	public boolean playCard( int handPos, int boardPos) {
 		
-		//TODO: Right Here
-		Card card = model.getPlayer().getHand().getCard( handPos);
-		if( model.canPlay( card))
+		//Right now, assuming all cards are character cards
+		CharacterCard card = (CharacterCard) model.getPlayer().getHand().getCard( handPos);
+		if( !model.canPlay( card)) {
+			
+			if( model.getPlayer().getNoOfConvert() == 1) {
+				
+				if( model.canPlayWithConversion( card)) {
+					
+					if( !model.putCharacter(card, boardPos))
+						return false;
+					
+					model.getPlayer().consume( card.getCost());
+					model.getPlayer().discard( card);
+				}
+				
+				else {
+					
+					return false;
+				}
+			}
+			
+			else
+				return false;
+			return false;
+		}
+		
+		else {
+			
+			if( !model.putCharacter(card, boardPos))
+				return false;
+			
+			model.getPlayer().consume( card.getCost());
+			model.getPlayer().discard( card);
 			return true;
-		
-		return false;
+		}
 	}
 	
 	public void endTurn() {
@@ -49,7 +78,7 @@ public class GameManager extends Manager{
 	}
 
 	public boolean canPlay(int cardChoice) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return model.canPlay( model.getCard( cardChoice));
 	}
 }

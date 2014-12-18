@@ -23,6 +23,16 @@ public class Hand {
 		
 		cards.add( card);
 	}
+	
+	public void remove( Card card) {
+		
+		cards.remove( card);
+	}
+	
+	public void remove( int index) {
+		
+		cards.remove( index);
+	}
 
 	//TRIVIAL METHODS
 	public ArrayList<Card> getCards() {

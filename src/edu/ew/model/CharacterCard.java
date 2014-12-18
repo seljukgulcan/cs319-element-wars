@@ -24,6 +24,11 @@ public class CharacterCard extends Card {
 		setHealth( health);
 		setAttack( attack);
 	}
+	
+	public Character createCharacter() {
+		
+		return new Character( name, attack, health);
+	}
 
 	public CharacterCard copy() {
 		

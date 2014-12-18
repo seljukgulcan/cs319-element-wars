@@ -54,7 +54,12 @@ public class Tester {
 				
 				if( controller.canPlay( cardChoice)) {
 					
+					seeBoard( model);
+					System.out.println( "Select an empty position [0,7]");
 					posChoice = scanner.nextInt();
+					
+					if( !controller.playCard( cardChoice, posChoice))
+						System.out.println( "Board position is wrong");
 				}
 				
 				else {

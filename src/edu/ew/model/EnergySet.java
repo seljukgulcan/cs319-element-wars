@@ -68,6 +68,9 @@ public class EnergySet {
 		setTrivial( other.getTrivial());
 	}
 	
+	
+	
+	//TRIVIAL METHODS
 	public int getPure() {
 		return pure;
 	}
@@ -195,29 +198,125 @@ public class EnergySet {
 	
 	boolean canPay( EnergySet other) {
 		
-		//TODO: complete method
-		return false;
+		int remainder = 0;
+		if( air < other.getAir())
+			return false;
+		remainder += air - other.getAir();
+		
+		if( earth < other.getEarth())
+			return false;
+		remainder += earth - other.getEarth();
+		
+		if( fire < other.getFire())
+			return false;
+		remainder += fire - other.getFire();
+		
+		if( water < other.getWater())
+			return false;
+		remainder += water - other.getWater();
+		
+		if( pure < other.getPure())
+			return false;
+		remainder += pure - other.getPure();
+		
+		if( remainder < other.getTrivial())
+			return false;
+		
+		return true;
 	}
 	
-	boolean canPayWithConversion( EnergySet other) {
+	public void consume( EnergySet other) {
+		
+		//Assuming this energyset can pay other.
+		air -= other.getAir();
+		earth -= other.getEarth();
+		fire -= other.getEarth();
+		water -= other.getEarth();
+		pure -= other.getEarth();
+		
+		int needToPay = other.getTrivial();
+		if( trivial >= needToPay) {
+			
+			trivial -= needToPay;
+			return;
+		}
+		else {
+			
+			trivial = 0;
+			needToPay -= trivial;
+		}
+		
+		//pay with air
+		if( air >= needToPay) {
+			
+			air -= needToPay;
+			return;
+		}
+		else {
+			
+			air = 0;
+			needToPay -= air;
+		}
+		
+		//pay with earth
+		if( earth >= needToPay) {
+			
+			earth -= needToPay;
+			return;
+		}
+		else {
+			
+			earth = 0;
+			needToPay -= earth;
+		}
+		
+		//pay with fire
+		if( fire >= needToPay) {
+			
+			fire -= needToPay;
+			return;
+		}
+		else {
+			
+			fire = 0;
+			needToPay -= fire;
+		}
+		
+		//pay with water
+		if( water >= needToPay) {
+			
+			water -= needToPay;
+			return;
+		}
+		else {
+			
+			water = 0;
+			needToPay -= water;
+		}
+		
+		//pay with pure
+		pure -= needToPay;
+	}
+	
+	public boolean canPayWithConversion( EnergySet other) {
 		
 		//TODO: complete method
 		return false;
 	}
 	
-	int getConvertCost( EnergySet other) {
+	public int getConvertCost( EnergySet other) {
 		
 		//TODO: complete method
 		return 0;
 	}
 	
-	int convert( EnergySet other) {
+	public int convert( EnergySet other) {
 		
 		//TODO: complete method
 		return 0;
 	}
 	
-	EnergySet copy() {
+	public EnergySet copy() {
 		
 		EnergySet copied = new EnergySet( this);
 		return copied;

@@ -43,6 +43,12 @@ public class Board {
 		return true;
 	}
 	
+	public boolean putCharacter( CharacterCard card, int position, Side side) {
+		
+		Character character = card.createCharacter();
+		return putCharacter( character, position, side);
+	}
+	
 	public boolean removeCharacter( int position, Side side) {
 		
 		if( getSide( side).get( position) == null)
@@ -62,6 +68,11 @@ public class Board {
 		playerSide.set( pos1, playerSide.get( pos2));
 		playerSide.set( pos2, temp);
 		return true;
+	}
+	
+	public void killCharacter( int position, Side side) {
+		
+		getSide( side).remove( position);
 	}
 	
 	public Character getCharacter( int position, Side side) {

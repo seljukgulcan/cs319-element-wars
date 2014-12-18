@@ -34,6 +34,47 @@ public class ModelConnector {
 		return activeGame.getBoard();
 	}
 	
+	public void discard( Card card) {
+		
+		discard( card, turnOf());
+	}
+	
+	public void discard( Card card, Side side) {
+		
+		Player p = getPlayer( side);
+		p.discard( card);
+	}
+	
+	public Card getCard( int index) {
+		
+		return getHand().getCard( index);
+	}
+	
+	public Card getCard( int index, Side side) {
+		
+		return getHand( side).getCard( index);
+	}
+	
+	public boolean putCharacter( Character character, int position, Side side) {
+		
+		return activeGame.getBoard().putCharacter(character, position, side);
+	}
+	
+	public boolean putCharacter( Character character, int position) {
+		
+		return activeGame.getBoard().putCharacter(character, position, turnOf());
+	}
+	
+	public boolean putCharacter( CharacterCard card, int position, Side side) {
+		
+		return activeGame.getBoard().putCharacter(card, position, side);
+	}
+	
+	public boolean putCharacter( CharacterCard card, int position) {
+		
+		return activeGame.getBoard().putCharacter(card, position, turnOf());
+	}
+	
 	public boolean canPlay( Card card) {
 		
 		return canPlay( turnOf(), card);
@@ -43,6 +84,17 @@ public class ModelConnector {
 		
 		Player p = getPlayer( side);
 		return p.canPlay(card);
+	}
+	
+	public boolean canPlayWithConversion( Card card) {
+		
+		return canPlayWithConversion( turnOf(), card);
+	}
+	
+	public boolean canPlayWithConversion( Side side, Card card) {
+		
+		Player p = getPlayer( side);
+		return p.canPlayWithConversion(card);
 	}
 	
 	public Player getPlayer( Side side) {
@@ -70,6 +122,11 @@ public class ModelConnector {
 	public void endTurn() {
 		
 		activeGame.endTurn();
+	}
+	
+	public Hand getHand() {
+		
+		return getHand( turnOf());
 	}
 	
 	public Hand getHand( Side side) {

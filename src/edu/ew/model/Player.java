@@ -16,6 +16,7 @@ public class Player {
 	protected Hand	hand;
 	protected EnergyPalette energyPalette;
 	protected int noOfConvert;
+	protected CardPile discardPile;
 	
 	private Player( Side side) {
 		
@@ -24,12 +25,18 @@ public class Player {
 		hand = new Hand();
 		energyPalette = new EnergyPalette();
 		noOfConvert = 0;
+		discardPile = new CardPile();
 	}
 	
 	public Player( Side side, Deck deck) {
 		
 		this( side);
 		setDeck( deck);
+	}
+	
+	public void consume( EnergySet cost) {
+		
+		energyPalette.getActiveEnergies().consume( cost);
 	}
 	
 	public void shuffleDeck() {
@@ -53,9 +60,20 @@ public class Player {
 		energyPalette.addPureEnergy();
 	}
 	
+	public void discard( Card card) {
+		
+		hand.remove( card);
+		discardPile.add( card);
+	}
+	
 	public boolean canPlay( Card card) {
 		
 		return energyPalette.getActiveEnergies().canPay( card.cost);
+	}
+	
+	public boolean canPlayWithConversion( Card card) {
+		
+		return energyPalette.getActiveEnergies().canPayWithConversion( card.cost);
 	}
 	
 	//TRIVIAL METHODS
