@@ -37,17 +37,22 @@ public class Hand {
 		
 		String stringToReturn = "";
 		
+		int i = 0;
 		Iterator<Card> it = cards.iterator();
 		while( it.hasNext()) {
 			
-			//System.out.println( "Something is wrong");
-			stringToReturn += it.next().toString() + "\n";
-			//((CharacterCard)it.next()).speak();
+			stringToReturn += i + "--> " + it.next().toString() + "\n";
+			i++;
 		}
 		
 		if( stringToReturn.equals( ""))
 			stringToReturn = "Empty Hand";
 		
 		return stringToReturn;
+	}
+
+	public Card getCard(int handPos) {
+		
+		return cards.get( handPos);
 	}
 }

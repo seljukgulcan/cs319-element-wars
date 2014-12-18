@@ -10,11 +10,12 @@ public class Player {
 	
 	public static enum Side { WHITE, BLACK};
 
-	private Deck    deck;
-	private int		health;
-	private Side	side;
-	private Hand	hand;
-	private EnergyPalette energyPalette;
+	protected Deck    deck;
+	protected int	health;
+	protected Side	side;
+	protected Hand	hand;
+	protected EnergyPalette energyPalette;
+	protected int noOfConvert;
 	
 	private Player( Side side) {
 		
@@ -22,6 +23,7 @@ public class Player {
 		setSide( side);
 		hand = new Hand();
 		energyPalette = new EnergyPalette();
+		noOfConvert = 0;
 	}
 	
 	public Player( Side side, Deck deck) {
@@ -45,6 +47,17 @@ public class Player {
 		for( int i = 0; i < size; i++)
 			draw();
 	}
+	
+	public void gainEnergy() {
+		
+		energyPalette.addPureEnergy();
+	}
+	
+	public boolean canPlay( Card card) {
+		
+		return energyPalette.getActiveEnergies().canPay( card.cost);
+	}
+	
 	//TRIVIAL METHODS
 	public Deck getDeck() {
 		return deck;
@@ -84,5 +97,13 @@ public class Player {
 
 	public void setEnergyPalette(EnergyPalette energyPalette) {
 		this.energyPalette = energyPalette;
+	}
+
+	public int getNoOfConvert() {
+		return noOfConvert;
+	}
+
+	public void setNoOfConvert(int noOfConvert) {
+		this.noOfConvert = noOfConvert;
 	}
 }

@@ -2,6 +2,7 @@ package edu.ew.controller;
 
 import java.io.FileNotFoundException;
 
+import edu.ew.model.Card;
 import edu.ew.model.ModelConnector;
 
 public class GameManager extends Manager{
@@ -26,6 +27,29 @@ public class GameManager extends Manager{
 			return false;
 		
 		model.createGame();
-		return model.startGame();
+		model.startGame();
+		turnManager.startTurn();
+		
+		return true;
+	}
+	
+	public boolean playCard( int handPos) {
+		
+		//TODO: Right Here
+		Card card = model.getPlayer().getHand().getCard( handPos);
+		if( model.canPlay( card))
+			return true;
+		
+		return false;
+	}
+	
+	public void endTurn() {
+		
+		model.endTurn();
+	}
+
+	public boolean canPlay(int cardChoice) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

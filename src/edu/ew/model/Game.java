@@ -66,6 +66,7 @@ public class Game extends Observable{
 		getPlayerWhite().draw( STARTING_HAND_SIZE);
 		getPlayerBlack().draw( STARTING_HAND_SIZE);
 		setTurnNo( 0);
+		gameStarted = true;
 		return true;
 	}
 	
@@ -75,6 +76,11 @@ public class Game extends Observable{
 			return null;
 		
 		return getTurnNo() % 2 == 0 ? Side.WHITE : Side.BLACK;
+	}
+	
+	public void endTurn() {
+		
+		turnNo++;
 	}
 
 	//TRIVIAL METHODS

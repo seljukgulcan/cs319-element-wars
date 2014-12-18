@@ -199,6 +199,12 @@ public class EnergySet {
 		return false;
 	}
 	
+	boolean canPayWithConversion( EnergySet other) {
+		
+		//TODO: complete method
+		return false;
+	}
+	
 	int getConvertCost( EnergySet other) {
 		
 		//TODO: complete method

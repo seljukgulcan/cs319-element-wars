@@ -29,6 +29,49 @@ public class ModelConnector {
 		activeGame = null;
 	}
 	
+	public Board getBoard() {
+		
+		return activeGame.getBoard();
+	}
+	
+	public boolean canPlay( Card card) {
+		
+		return canPlay( turnOf(), card);
+	}
+	
+	public boolean canPlay( Side side, Card card) {
+		
+		Player p = getPlayer( side);
+		return p.canPlay(card);
+	}
+	
+	public Player getPlayer( Side side) {
+		
+		switch( side) {
+		case BLACK:
+			return activeGame.getPlayerBlack();
+		case WHITE:
+			return activeGame.getPlayerWhite();		
+		}
+		
+		return null;
+	}
+	
+	public Player getPlayer() {
+		
+		return getPlayer( activeGame.turnOf());
+	}
+	
+	public Side turnOf() {
+		
+		return activeGame.turnOf();
+	}
+	
+	public void endTurn() {
+		
+		activeGame.endTurn();
+	}
+	
 	public Hand getHand( Side side) {
 		
 		switch( side) {

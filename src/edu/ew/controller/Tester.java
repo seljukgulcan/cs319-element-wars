@@ -1,6 +1,9 @@
 package edu.ew.controller;
 
 import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import javax.jws.WebParam.Mode;
 
 import edu.ew.model.Account;
 import edu.ew.model.Hand;
@@ -16,6 +19,7 @@ public class Tester {
 
 	public static void main( String[] args) throws FileNotFoundException {
 		
+		Scanner scanner = new Scanner( System.in);
 		echo( "Welcome to the Element Wars Game");
 		
 		Account me = null;
@@ -33,10 +37,94 @@ public class Tester {
 		if( controller.startGame())
 			System.out.println( "Game is started");
 		
-		//a line
-		Hand currentHand = model.getHand( Side.WHITE);
-		System.out.println( "White hand:");
-		System.out.println( currentHand);
+		menu();
 		
+		int choice = -1;
+		while( choice != 0) {
+			
+			choice = scanner.nextInt();
+			
+			if( choice == 1) {
+				
+				int cardChoice;
+				int posChoice;
+				seeHand( model);
+				System.out.println( "Choose a card");
+				cardChoice = scanner.nextInt();
+				
+				if( controller.canPlay( cardChoice)) {
+					
+					posChoice = scanner.nextInt();
+				}
+				
+				else {
+					
+					System.out.println( "You cannot play that card");
+				}
+			}
+			
+			else if( choice == 2) {
+				
+				
+			}
+			
+			else if( choice == 3) {
+				
+				
+			}
+			
+			else if( choice == 4) {
+				
+				seeHand( model);
+			}
+			
+			else if( choice == 5) {
+				
+				seeBoard( model);
+			}
+			
+			else if( choice == 6) {
+				
+				seePalette( model);
+			}
+			
+			else if( choice == 7) {
+				
+				controller.endTurn();
+			}
+			
+			if( choice != 0)
+				menu();
+		}
+	}
+	
+	public static void seeHand( ModelConnector model) {
+		
+		Hand currentHand = model.getHand( Side.WHITE);
+		System.out.println( currentHand);
+	}
+	
+	public static void seeBoard( ModelConnector model) {
+		
+		System.out.println( model.getActiveGame().getBoard());
+	}
+	
+	public static void seePalette( ModelConnector model) {
+		
+		System.out.println( model.getPlayer().getEnergyPalette());
+	}
+	
+	public static void menu() {
+		
+		System.out.println( "----------------------------------------");
+		System.out.println( "1 - Play Card");
+		System.out.println( "2 - Attack");
+		System.out.println( "3 - Convert Energy");
+		System.out.println( "4 - See Hand");
+		System.out.println( "5 - See Board");
+		System.out.println( "6 - See Palette");
+		System.out.println( "7 - End Turn");
+		System.out.println( "0 - Quit");
+		System.out.println( "----------------------------------------");
 	}
 }

@@ -71,4 +71,13 @@ public class Character extends Observable{
 	public void setEffect(Effect effect) {
 		this.effect = effect;
 	}
+	
+	@Override
+	public String toString() {
+		
+		String stringToReturn = "";
+		stringToReturn += "[" + attack + ", " + defence + "]";
+		
+		return stringToReturn;
+	}
 }

@@ -1,6 +1,7 @@
 package edu.ew.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import edu.ew.model.Player.Side;
 
@@ -97,5 +98,39 @@ public class Board {
 
 	public void setBlackPlayer(Player blackPlayer) {
 		this.blackPlayer = blackPlayer;
+	}
+	
+	@Override
+	public String toString() {
+		
+		String stringToReturn = "";
+		
+		Iterator<Character> it = blackSide.iterator();
+		while( it.hasNext()) {
+			
+			Character i = it.next();
+			
+			if( i == null)
+				stringToReturn += " [<  >]";
+			
+			else
+				stringToReturn += " " + i.toString();
+		}
+		
+		stringToReturn += "\n";
+		
+		it = whiteSide.iterator();
+		while( it.hasNext()) {
+			
+			Character i = it.next();
+			
+			if( i == null)
+				stringToReturn += " [<  >]";
+			
+			else
+				stringToReturn += " " + i.toString();
+		}
+		
+		return stringToReturn;
 	}
 }
