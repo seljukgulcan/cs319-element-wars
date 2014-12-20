@@ -23,4 +23,11 @@ public class ViewConstants {
 	
 	//Panel Constants
 	public static Color backgroundColor = Color.WHITE;
+	
+	//Credits Constants
+	public static String creditsFilePath = "assets/credits";
+	
+	//Exception Constants
+	public static String missingFileEx = "Error: One or more files needed to run the game are missing.";
+	public static String corruptedFileEx = "Error: One or more files needed to run the game are corrupted.";
 }

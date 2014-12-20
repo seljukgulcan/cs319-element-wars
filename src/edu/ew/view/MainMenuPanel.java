@@ -9,6 +9,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  * 
@@ -48,7 +49,8 @@ public class MainMenuPanel extends JPanel {
 		creditsButton.setAlignmentX( Component.CENTER_ALIGNMENT);
 		exitButton.setAlignmentX( Component.CENTER_ALIGNMENT);
 		
-		exitButton.addActionListener( new exitButtonListener());
+		exitButton.addActionListener( new ExitButtonListener());
+		creditsButton.addActionListener( new CreditsButtonListener());
 		
 		add( Box.createRigidArea( new Dimension( 0, 100)));
 		add( playButton);
@@ -60,12 +62,22 @@ public class MainMenuPanel extends JPanel {
 		add( exitButton);
 	}
 	
-	public class exitButtonListener implements ActionListener {
+	public class ExitButtonListener implements ActionListener {
 	
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
 			System.exit(0);
 		}
+	}
+	
+	public class CreditsButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(MainMenuPanel.this);
+			frame.changePanel( new CreditPanel());
+		}		
 	}
 }
