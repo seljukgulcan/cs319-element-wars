@@ -30,4 +30,7 @@ public class ViewConstants {
 	//Exception Constants
 	public static String missingFileEx = "Error: One or more files needed to run the game are missing.";
 	public static String corruptedFileEx = "Error: One or more files needed to run the game are corrupted.";
+	
+	//PreferredSizes Constants
+	public static Dimension preferredTextField = new Dimension( 200, 25);
 }
