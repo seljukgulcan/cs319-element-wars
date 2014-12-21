@@ -52,6 +52,7 @@ public class MainMenuPanel extends JPanel {
 		exitButton.addActionListener( new ExitButtonListener());
 		creditsButton.addActionListener( new CreditsButtonListener());
 		playButton.addActionListener( new PlayGameButtonListener());
+		editDeckButton.addActionListener( new EditDeckButtonListener());
 		
 		add( Box.createRigidArea( new Dimension( 0, 100)));
 		add( playButton);
@@ -90,5 +91,18 @@ public class MainMenuPanel extends JPanel {
 			MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(MainMenuPanel.this);
 			frame.changePanel( new PreparationPanel());
 		}		
+	}
+	
+	public class EditDeckButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(MainMenuPanel.this);
+			frame.changePanel( new DeckEditPanel());
+			//TODO:
+			/*JOptionPane.showMessageDialog( SwingUtilities.getWindowAncestor(MainMenuPanel.this),
+				    "Eggs are not supposed to be green.");*/
+		}
 	}
 }

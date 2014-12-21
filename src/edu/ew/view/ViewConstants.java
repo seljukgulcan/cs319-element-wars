@@ -14,7 +14,7 @@ public class ViewConstants {
 
 	//Frame Constants
 	public static String frameTitle = "Element Wars Card Game";
-	public static int frameWidth = 800;
+	public static int frameWidth = 1000;
 	public static int frameHeight = 600;
 	public static Dimension frameSize = new Dimension( frameWidth, frameHeight);
 	
@@ -33,4 +33,13 @@ public class ViewConstants {
 	
 	//PreferredSizes Constants
 	public static Dimension preferredTextField = new Dimension( 200, 25);
+	
+	//CardViewPanel Constants
+	public static Dimension cardViewPanelSize = new Dimension( 300 ,frameHeight);
+	
+	//CardListPanel Constants
+	public static Dimension cardListPanelSize = new Dimension( 250 ,frameHeight);
+	
+	//FilterPanel Constants
+	public static Dimension filterPanelSize = new Dimension( cardListPanelSize.width, 100);
 }
