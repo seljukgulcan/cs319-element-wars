@@ -1,0 +1,7 @@
+{
+	"name":"Air Warrior",
+	"is-spell":false,
+	"attack":2,
+	"health":1,
+	"cost":[1,0,0,0,0,0]
+}

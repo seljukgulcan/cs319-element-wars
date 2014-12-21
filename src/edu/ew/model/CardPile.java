@@ -1,6 +1,7 @@
 package edu.ew.model;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Stack;
 
@@ -12,7 +13,7 @@ import java.util.Stack;
  */
 public class CardPile extends Observable{
 
-	private Stack<Card> cards;
+	protected Stack<Card> cards;
 	
 	public CardPile() {
 		
@@ -32,6 +33,16 @@ public class CardPile extends Observable{
 	public void add( Card card) {
 		
 		cards.push( card);
+	}
+	
+	public Iterator<Card> iterator() {
+		
+		return cards.iterator();
+	}
+	
+	public int getNoOfCards() {
+		
+		return cards.size();
 	}
 	
 	//TRIVIAL METHODS

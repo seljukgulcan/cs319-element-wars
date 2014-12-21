@@ -1,0 +1,7 @@
+{
+	"name":"Earth Warrior",
+	"is-spell":false,
+	"attack":1,
+	"health":2,
+	"cost":[0,1,0,0,0,0]
+}

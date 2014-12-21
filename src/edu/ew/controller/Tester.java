@@ -1,11 +1,16 @@
 package edu.ew.controller;
 
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 import javax.jws.WebParam.Mode;
 
 import edu.ew.model.Account;
+import edu.ew.model.CardImporter;
+import edu.ew.model.CorruptedFileException;
+import edu.ew.model.Deck;
+import edu.ew.model.DeckIO;
 import edu.ew.model.Hand;
 import edu.ew.model.ModelConnector;
 import edu.ew.model.Player.Side;
@@ -17,7 +22,19 @@ public class Tester {
 		System.out.println( message);
 	}
 
-	public static void main( String[] args) throws FileNotFoundException {
+	public static void main( String[] args) throws FileNotFoundException, CorruptedFileException, UnsupportedEncodingException {
+		
+		Deck test = DeckIO.importDeck( "earth-fire");		
+		System.out.println( test);
+		test.add( CardImporter.loadCard( 1));
+		test.add( CardImporter.loadCard( 1));
+		System.out.println( test);
+		DeckIO.exportDeck( test, "new-earth-fire");
+		
+		Deck test2 = DeckIO.importDeck( "sth/new-earth-fire");
+		System.out.println( test2);
+		
+		System.exit( 0);
 		
 		Scanner scanner = new Scanner( System.in);
 		echo( "Welcome to the Element Wars Game");

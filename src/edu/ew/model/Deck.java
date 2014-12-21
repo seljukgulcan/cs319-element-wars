@@ -1,6 +1,7 @@
 package edu.ew.model;
 
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 
 /**
  * Represents deck of players by extending CardPile class
@@ -19,5 +20,18 @@ public class Deck extends CardPile {
 			deck.addCard( card.copy());
 		
 		return deck;
+	}
+	
+	public String toString() {
+		
+		String stringToReturn = "";
+		Iterator<Card> it = cards.iterator();
+		
+		while( it.hasNext()) {
+			
+			stringToReturn += it.next().toString() + "\n";
+		}
+		
+		return stringToReturn;
 	}
 }
