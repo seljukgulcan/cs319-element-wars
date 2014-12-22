@@ -33,7 +33,21 @@ public class CardPile extends Observable{
 	public void add( Card card) {
 		
 		cards.push( card);
+		setChanged();
+		notifyObservers();
 	}
+	
+	public void remove( Card card) {
+		
+		cards.remove( card);
+		setChanged();
+		notifyObservers();
+	}
+	
+	/*public void addCard( Card card) {
+		
+		cards.add( card);
+	}*/
 	
 	public Iterator<Card> iterator() {
 		
@@ -52,10 +66,5 @@ public class CardPile extends Observable{
 
 	public void setCards(Stack<Card> cards) {
 		this.cards = cards;
-	}
-
-	public void addCard( Card card) {
-		
-		cards.add( card);
 	}
 }

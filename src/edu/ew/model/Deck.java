@@ -17,7 +17,7 @@ public class Deck extends CardPile {
 		Card card = CardImporter.loadCard( 1);
 
 		for( int i = 0; i < 30; i++)
-			deck.addCard( card.copy());
+			deck.add( card.copy());
 		
 		return deck;
 	}

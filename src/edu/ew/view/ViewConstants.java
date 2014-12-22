@@ -3,6 +3,13 @@ package edu.ew.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * 
@@ -14,7 +21,7 @@ public class ViewConstants {
 
 	//Frame Constants
 	public static String frameTitle = "Element Wars Card Game";
-	public static int frameWidth = 1000;
+	public static int frameWidth = 1080;
 	public static int frameHeight = 600;
 	public static Dimension frameSize = new Dimension( frameWidth, frameHeight);
 	
@@ -32,14 +39,31 @@ public class ViewConstants {
 	public static String corruptedFileEx = "Error: One or more files needed to run the game are corrupted.";
 	
 	//PreferredSizes Constants
-	public static Dimension preferredTextField = new Dimension( 200, 25);
+	public static final Dimension preferredTextField = new Dimension( 200, 25);
 	
 	//CardViewPanel Constants
-	public static Dimension cardViewPanelSize = new Dimension( 300 ,frameHeight);
+	public static final Dimension cardViewPanelSize = new Dimension( 300 ,frameHeight);
 	
 	//CardListPanel Constants
-	public static Dimension cardListPanelSize = new Dimension( 250 ,frameHeight);
+	public static final Dimension cardListPanelSize = new Dimension( 200 ,frameHeight);
+	public static final Dimension cardTextViewPanelSize = new Dimension( cardListPanelSize.width - 20, 75);
 	
 	//FilterPanel Constants
-	public static Dimension filterPanelSize = new Dimension( cardListPanelSize.width, 100);
+	public static final Dimension filterPanelSize = new Dimension( cardListPanelSize.width, 60);
+	
+	//Energy Icons
+	public static ImageIcon air;
+	public static ImageIcon earth;
+	public static ImageIcon fire;
+	public static ImageIcon water;
+	public static ImageIcon trivial;
+	
+	public static void initialize() throws IOException {
+		
+		ViewConstants.air = new ImageIcon( ImageIO.read(new File( "assets/images/air.png")));
+		ViewConstants.earth = new ImageIcon( ImageIO.read(new File( "assets/images/earth.png")));
+		ViewConstants.fire = new ImageIcon( ImageIO.read(new File( "assets/images/fire.png")));
+		ViewConstants.water = new ImageIcon( ImageIO.read(new File( "assets/images/water.png")));
+		ViewConstants.trivial = new ImageIcon( ImageIO.read(new File( "assets/images/trivial.png")));
+	}
 }

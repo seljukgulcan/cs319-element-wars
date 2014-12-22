@@ -59,4 +59,9 @@ public class DeckIO {
 		
 		writer.close();
 	}
+	
+	public static Deck importAllCards() {
+		
+		return null;
+	}
 }

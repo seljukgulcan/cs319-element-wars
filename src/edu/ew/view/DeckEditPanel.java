@@ -13,6 +13,7 @@ public class DeckEditPanel extends JPanel {
 	
 	CardViewPanel cardViewPanel;
 	CardListPanel cardListPanel;
+	DeckShowPanel deckShowPanel;
 
 	public DeckEditPanel() {
 		
@@ -22,21 +23,10 @@ public class DeckEditPanel extends JPanel {
 		cardViewPanel = new CardViewPanel();
 		add( cardViewPanel, BorderLayout.WEST);
 		
-		cardListPanel = new CardListPanel();
+		cardListPanel = new CardListPanel( cardViewPanel);
 		add( cardListPanel, BorderLayout.EAST);
 		
-		//Edit
-		JButton back = new JButton( "back");
-		back.addActionListener( new MainMenuButtonListener());
-		add( back, BorderLayout.CENTER);
-	}
-	
-	public class MainMenuButtonListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(DeckEditPanel.this);
-			frame.changePanel( new MainMenuPanel());
-		}	
+		deckShowPanel = new DeckShowPanel( cardViewPanel);
+		add( deckShowPanel, BorderLayout.CENTER);
 	}
 }

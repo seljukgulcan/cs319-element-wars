@@ -20,5 +20,4 @@ public class ConsoleView implements Observer{
 		// TODO Auto-generated method stub
 		
 	}
-
 }
