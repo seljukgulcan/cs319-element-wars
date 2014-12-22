@@ -1,7 +1,7 @@
 {
-	"name":"Fire Acrobat",
+	"name":"Wind Warrior",
 	"is-spell":false,
 	"attack":2,
 	"health":1,
-	"cost":[0,0,1,0,0,0]
+	"cost":[1,0,0,0,0,0]
 }
