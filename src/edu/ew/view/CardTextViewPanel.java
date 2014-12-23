@@ -20,10 +20,15 @@ import edu.ew.model.EnergySet;
 public class CardTextViewPanel extends JPanel {
 	
 	CardViewPanel viewPanel;
+	DeckShowPanel deckShowPanel;
 	int cardId;
+	Card card;
+	DeckEditPanel controller;
 
-	public CardTextViewPanel( Card card, CardViewPanel viewPanel) {
+	public CardTextViewPanel( Card card, DeckEditPanel controller, boolean inCollection) {
 		
+		this.controller = controller;
+		this.card = card;
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS));
 		setBackground( ViewConstants.backgroundColor);
 		setPreferredSize( ViewConstants.cardTextViewPanelSize);
@@ -35,7 +40,6 @@ public class CardTextViewPanel extends JPanel {
 		EnergySetPanel cost = null;
 		
 		cardId = card.getId();
-		this.viewPanel = viewPanel;
 		cardName = new JLabel( card.getName());
 		
 		if( card instanceof CharacterCard)
@@ -57,18 +61,35 @@ public class CardTextViewPanel extends JPanel {
 		add( Box.createRigidArea( new Dimension(0 ,5)));
 		add( cost);
 		
-		addMouseListener( new CardHoverListener());
+		addMouseListener( new CardHoverListener( inCollection));
+	}
+	
+	public CardTextViewPanel( Card card, DeckEditPanel controller) {
+		
+		this( card, controller, false);
 	}
 	
 	public class CardHoverListener implements MouseListener {
 
+		private boolean inCollection;
+		
+		public CardHoverListener() {
+			
+			this.inCollection = false;
+		}
+		
+		public CardHoverListener( boolean inCollection) {
+			
+			this.inCollection = inCollection;
+		}
+		
 		@Override
 		public void mouseClicked(MouseEvent arg0) {}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
 			
-			viewPanel.changePicture( cardId);
+			controller.changePicture( cardId);
 		}
 
 		@Override
@@ -78,7 +99,18 @@ public class CardTextViewPanel extends JPanel {
 		public void mousePressed(MouseEvent arg0) {}
 
 		@Override
-		public void mouseReleased(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {
+			
+			if( inCollection) {
+				
+				controller.addCardToCurrentDeck( card.copy());
+			}
+			
+			else {
+				
+				controller.removeCardFromCurrentDeck( card);
+			}
+		}
 	}
 	
 	public class EnergySetPanel extends JPanel {

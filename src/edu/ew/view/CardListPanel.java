@@ -1,30 +1,31 @@
 package edu.ew.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import edu.ew.model.Card;
 import edu.ew.model.CardImporter;
-import edu.ew.model.CorruptedFileException;
 import edu.ew.model.Deck;
-import edu.ew.model.DeckIO;
 
 @SuppressWarnings("serial")
 public class CardListPanel extends CenteredBoxPanel {
 
 	FilterPanel filterPanel;
+	DeckEditPanel controller;
 	
-	public CardListPanel( CardViewPanel viewPanel) {
+	public CardListPanel( DeckEditPanel controller) {
+		
+		this.controller = controller;
 		
 		setPreferredSize( ViewConstants.cardListPanelSize);
 		setBackground( ViewConstants.backgroundColor);
@@ -36,24 +37,24 @@ public class CardListPanel extends CenteredBoxPanel {
 		
 		filterPanel = new FilterPanel();
 		
-		add( filterPanel);
+		//add( filterPanel);
 		add( scrollPane);
 		
 		Deck deck = null;
 		try {
-			deck = DeckIO.importDeck( "earth-fire");
+			deck = CardImporter.loadAllCards();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
+			JOptionPane.showMessageDialog( SwingUtilities.getWindowAncestor( this), 
+					"Fatal Error. Card files are corrupted. Exiting...");
 			e.printStackTrace();
-		} catch (CorruptedFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.exit( 0);
 		}
 		
 		Iterator<Card> it = deck.iterator();
 		while( it.hasNext()) {
 			
-			listPanel.add( new CardTextViewPanel( it.next(), viewPanel));
+			listPanel.add( new CardTextViewPanel( it.next(), controller, true));
 		}
 	}
 	

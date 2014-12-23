@@ -26,10 +26,11 @@ public class Tester {
 		
 		Deck test = DeckIO.importDeck( "earth-fire");		
 		System.out.println( test);
+		test.setId( "new-earth-fire");
 		test.add( CardImporter.loadCard( 1));
 		test.add( CardImporter.loadCard( 1));
 		System.out.println( test);
-		DeckIO.exportDeck( test, "new-earth-fire");
+		DeckIO.exportDeck( test);
 		
 		Deck test2 = DeckIO.importDeck( "sth/new-earth-fire");
 		System.out.println( test2);

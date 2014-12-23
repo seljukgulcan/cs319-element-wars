@@ -29,11 +29,6 @@ public class CreditPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane( credits);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		credits.setBackground( ViewConstants.backgroundColor);
-		/*credits.add( new JLabel( "Programmers"));
-		credits.add( new JLabel( "Selcuk Gulcan"));
-		credits.add( new JLabel( "Umut Hicyilmaz"));
-		credits.add( Box.createRigidArea( new Dimension( 0, 10)));
-		credits.add( new JLabel( "Thanks to all Deviantart fellows who share their works to be used in cards"));*/
 		
 		mainMenuButton.setFont( ViewConstants.buttonFont);
 		mainMenuButton.addActionListener( new MainMenuListener());

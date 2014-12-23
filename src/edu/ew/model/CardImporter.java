@@ -36,13 +36,31 @@ public class CardImporter {
 		return toReturn;
 	}
 	
+	public static Deck loadAllCards() throws FileNotFoundException {
+		
+		Deck deck = new Deck();
+		File folder = new File( CARDS_PATH);
+		File[] listOfFiles = folder.listFiles();
+
+		for (int i = 0; i < listOfFiles.length; i++) {
+			
+			String fileName = listOfFiles[i].getName();
+			int id = Integer.parseInt( fileName.substring( 0, fileName.lastIndexOf( '.')));
+			deck.add( loadCard( id));
+		}
+		
+		return deck;
+	}
+	
 	public static Card loadCard( int id) throws FileNotFoundException {
 		
 		//Load the file
 		File cardFile = new File( CARDS_PATH + id + CARDS_EXTENSION);
 		
 		//Load the string in the file
-		String cardContent = new Scanner( cardFile).useDelimiter("\\Z").next();
+		Scanner scanner = new Scanner( cardFile);
+		String cardContent = scanner.useDelimiter("\\Z").next();
+		scanner.close();
 		
 		//Parse json string
 		JsonObject cardJson = JsonObject.readFrom( cardContent );

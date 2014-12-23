@@ -17,7 +17,7 @@ public class ModelConnector {
 	private Account account;
 	private Game activeGame;
 	
-	public ModelConnector() throws FileNotFoundException {
+	public ModelConnector() throws FileNotFoundException, CorruptedFileException {
 		
 		setAccount( new Account());
 		activeGame = null;
@@ -141,7 +141,7 @@ public class ModelConnector {
 		return null;
 	}
 
-	public void createGame() throws FileNotFoundException {
+	public void createGame() throws FileNotFoundException, CorruptedFileException {
 		
 		setActiveGame( new Game( account.createPlayer( Side.WHITE), new AIDump( Side.BLACK)));
 	}

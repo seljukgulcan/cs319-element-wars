@@ -1,6 +1,5 @@
 package edu.ew.model;
 
-import java.io.FileNotFoundException;
 import java.util.Iterator;
 
 /**
@@ -10,18 +9,17 @@ import java.util.Iterator;
  * @see CardPile
  */
 public class Deck extends CardPile {
-
-	public static Deck getDefaultDeck() throws FileNotFoundException {
-		
-		Deck deck = new Deck();
-		Card card = CardImporter.loadCard( 1);
-
-		for( int i = 0; i < 30; i++)
-			deck.add( card.copy());
-		
-		return deck;
-	}
 	
+	private String id;
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id2) {
+		this.id = id2;
+	}
+
 	public String toString() {
 		
 		String stringToReturn = "";

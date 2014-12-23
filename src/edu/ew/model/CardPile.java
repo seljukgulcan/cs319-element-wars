@@ -44,11 +44,6 @@ public class CardPile extends Observable{
 		notifyObservers();
 	}
 	
-	/*public void addCard( Card card) {
-		
-		cards.add( card);
-	}*/
-	
 	public Iterator<Card> iterator() {
 		
 		return cards.iterator();

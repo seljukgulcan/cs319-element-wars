@@ -3,6 +3,7 @@ package edu.ew.controller;
 import java.io.FileNotFoundException;
 
 import edu.ew.model.CharacterCard;
+import edu.ew.model.CorruptedFileException;
 import edu.ew.model.ModelConnector;
 
 public class GameManager extends Manager{
@@ -21,7 +22,7 @@ public class GameManager extends Manager{
 		this.turnManager 	= new TurnManager( model);
 	}
 	
-	public boolean startGame() throws FileNotFoundException {
+	public boolean startGame() throws FileNotFoundException, CorruptedFileException {
 		
 		if( model.isGameStarted() && !model.isGameEnded())
 			return false;

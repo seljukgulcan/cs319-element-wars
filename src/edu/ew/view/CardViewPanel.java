@@ -36,7 +36,6 @@ public class CardViewPanel extends JPanel {
 	
 	public void changePicture( int id) {
 		
-		System.out.println( "here");
 		BufferedImage myPicture = null;
 		try {
 			myPicture = ImageIO.read(new File( "assets/card-images/" + id + ".png"));

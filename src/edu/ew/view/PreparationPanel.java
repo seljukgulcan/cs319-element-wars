@@ -3,6 +3,7 @@ package edu.ew.view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -12,11 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import edu.ew.model.DeckIO;
+
 @SuppressWarnings("serial")
 public class PreparationPanel extends CenteredBoxPanel {
 
 	JTextField nameField;
-	JComboBox deckSelect, opponentSelect;
+	JComboBox<String> deckSelect, opponentSelect;
 	
 	public PreparationPanel() {
 		
@@ -36,18 +39,22 @@ public class PreparationPanel extends CenteredBoxPanel {
 		playGameButton.setFont( ViewConstants.buttonFont);
 		playGameButton.addActionListener( new PlayGameListener());
 		
-		deckSelect = new JComboBox();
+		deckSelect = new JComboBox<String>();
 		deckSelect.setFont( ViewConstants.buttonFont);
 		deckSelect.addItem( "Default");
-		deckSelect.addItem( "Earth Deck");
-		deckSelect.addItem( "Fire Deck");
+		
+		ArrayList<String> names = DeckIO.getAllDeckNames();
+		for( int i = 0; i < names.size(); i++) {
+			
+			if( !names.get( i).equals( "Default"))
+				deckSelect.addItem( names.get(i));
+		}
 		deckSelect.setPreferredSize( ViewConstants.preferredTextField);
 		deckSelect.setMaximumSize( deckSelect.getPreferredSize() );
 		
-		opponentSelect = new JComboBox();
+		opponentSelect = new JComboBox<String>();
 		opponentSelect.setFont( ViewConstants.buttonFont);
 		opponentSelect.addItem( "Passive AI");
-		opponentSelect.addItem( "Dump AI");
 		opponentSelect.setPreferredSize( ViewConstants.preferredTextField);
 		opponentSelect.setMaximumSize( opponentSelect.getPreferredSize() );
 		

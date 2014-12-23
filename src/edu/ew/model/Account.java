@@ -13,20 +13,19 @@ import edu.ew.model.Player.Side;
 public class Account {
 	
 	private static final String DEFAULT_WHITE_NAME = "Yin";
-	private static final String DEFAULT_BLACK_NAME = "Yang";
 
 	private String 	name;
 	private Deck	deck;
 	
-	public Account() throws FileNotFoundException {
+	public Account() throws FileNotFoundException, CorruptedFileException {
 		
-		setDeck( Deck.getDefaultDeck());
+		setDeck( DeckIO.importDeck( "Default"));
 		setName( DEFAULT_WHITE_NAME);
 	}
 	
-	public Account( String name) throws FileNotFoundException {
+	public Account( String name) throws FileNotFoundException, CorruptedFileException {
 		
-		setDeck( Deck.getDefaultDeck());
+		setDeck( DeckIO.importDeck( "Default"));
 		setName( name);
 	}
 	
