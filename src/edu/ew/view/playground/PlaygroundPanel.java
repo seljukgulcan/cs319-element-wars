@@ -56,6 +56,7 @@ public class PlaygroundPanel extends JPanel {
 		rightPanel.add( handPanel);
 		
 		ControllerConnector.addView( ControllerConnector.getHand( Side.WHITE), handPanel);
+		ControllerConnector.addView( ControllerConnector.getDeck( Side.WHITE), handPanel);
 		ControllerConnector.addView( ControllerConnector.getEnergyPalette( Side.WHITE), whiteEnergyPanel);
 		ControllerConnector.addView( ControllerConnector.getEnergyPalette( Side.BLACK), blackEnergyPanel);
 		ControllerConnector.addView( ControllerConnector.getBoard(), whiteBoardPanel);

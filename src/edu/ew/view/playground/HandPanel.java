@@ -22,7 +22,9 @@ import javax.swing.SwingUtilities;
 
 import edu.ew.controller.ControllerConnector;
 import edu.ew.model.Card;
+import edu.ew.model.Deck;
 import edu.ew.model.Hand;
+import edu.ew.model.Player;
 import edu.ew.model.Player.Side;
 import edu.ew.view.ViewConstants;
 
@@ -42,6 +44,7 @@ public class HandPanel extends JPanel implements Observer{
 	private static String CARD_SMALL_PATH = "assets/card-images-small/";
 	private static String CARD_SMALL_EXTENSION = ".png";
 	
+	private JLabel noOfCards;
 	JPanel hand, deck;
 
 	public HandPanel() {
@@ -64,7 +67,17 @@ public class HandPanel extends JPanel implements Observer{
 		deck.setPreferredSize( DECK_SIZE);
 		deck.setMaximumSize( deck.getPreferredSize());
 		deck.setBackground( Color.black);
-		deck.add( new JLabel( ViewConstants.cardBack));
+		
+	    noOfCards=new JLabel( "20");
+	    noOfCards.setFont( PlaygroundConstants.bigFont);
+	    noOfCards.setForeground( Color.white);
+
+	    noOfCards.setIcon( ViewConstants.cardBack);
+	    noOfCards.setIconTextGap(-62);
+	    noOfCards.setOpaque(true);
+	    noOfCards.setLayout(null);
+	    noOfCards.setBackground( Color.white);
+		deck.add( noOfCards);
 		
 		add( hand);
 		add( deck);
@@ -73,17 +86,27 @@ public class HandPanel extends JPanel implements Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		
-		hand.removeAll();
-		
-		Iterator<Card> it = ((Hand)arg0).iterator();
-		
-		while( it.hasNext()) {
+		if( arg0 instanceof Hand) {
+			hand.removeAll();
 			
-			hand.add( new OneCard( it.next()));
+			Iterator<Card> it = ((Hand)arg0).iterator();
+			
+			while( it.hasNext()) {
+				
+				hand.add( new OneCard( it.next()));
+			}
+			
+			hand.revalidate();
+			hand.repaint();
 		}
 		
-		hand.revalidate();
-		hand.repaint();
+		else if( arg0 instanceof Deck) {
+			
+			Deck p = (Deck)arg0;
+			noOfCards.setText( "" + p.getNoOfCards());
+			
+			update( getGraphics());
+		}
 	}
 	
 	public class OneCard extends JPanel{
@@ -134,7 +157,5 @@ public class HandPanel extends JPanel implements Observer{
 			boolean a = ControllerConnector.playCard( card, Side.WHITE);
 			System.out.println( a);
 		}
-		
-		
 	}
 }

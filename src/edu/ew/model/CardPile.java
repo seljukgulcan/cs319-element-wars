@@ -23,11 +23,16 @@ public class CardPile extends Observable{
 	public void shuffle() {
 		
 		Collections.shuffle( cards);
+		setChanged();
+		notifyObservers();
 	}
 	
 	public Card draw() {
 		
-		return cards.pop();
+		Card card = cards.pop();
+		setChanged();
+		notifyObservers();
+		return card;
 	}
 	
 	public void add( Card card) {

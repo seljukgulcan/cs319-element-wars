@@ -114,4 +114,14 @@ public class ControllerConnector {
 		
 		return controller.getBoard();
 	}
+
+	public static Observable getDeck(Side side) {
+		
+		return controller.getDeck( side);
+	}
+
+	public static void endTurn() {
+		
+		controller.endTurn();
+	}
 }

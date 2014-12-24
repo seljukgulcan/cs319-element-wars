@@ -10,10 +10,12 @@ import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import edu.ew.model.Energy;
 import edu.ew.model.EnergyPalette;
 import edu.ew.model.EnergySet;
+import edu.ew.model.Player;
 import edu.ew.view.ViewConstants;
 
 /**
@@ -29,6 +31,7 @@ public class EnergyPanel extends JPanel implements Observer{
 	private static final Dimension SIZE_ONE = new Dimension( 70, 70);
 	
 	private ArrayList<OneEnergy> energies;
+	private JLabel life;
 
 	public EnergyPanel() {
 		
@@ -46,7 +49,21 @@ public class EnergyPanel extends JPanel implements Observer{
 		for( int i = 0; i < 5; i++)
 			add( energies.get( i));
 		
-		add( new JLabel( ViewConstants.life));
+	    life=new JLabel( "20");
+	    life.setFont( PlaygroundConstants.bigFont);
+	    life.setForeground( Color.red);
+
+	    life.setIcon( ViewConstants.life);
+	    life.setIconTextGap(-48);
+	    life.setOpaque(true);
+	    life.setLayout(null);
+	    life.setBackground( Color.white);
+
+	    add(life);
+
+	    //life.setText("12");
+	    add( life);
+		//add( new JLabel( ViewConstants.life));
 		
 		for( int i = 5; i < 10; i++)
 			add( energies.get( i));
@@ -152,45 +169,59 @@ public class EnergyPanel extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		clear();
-		EnergyPalette palette = (EnergyPalette)o;
-		
-		EnergySet max = palette.getMaxEnergies();
-		EnergySet active = palette.getActiveEnergies();
-		int no = 0;
-		
-		no = max.getAir() - active.getAir();
-		for( int i = 0; i < no; i++)
-			addUsedEnergy( Energy.AIR);
-		for( int i = 0; i < active.getAir(); i++)
-			addEnergy( Energy.AIR);
-		
-		no = max.getEarth() - active.getEarth();
-		for( int i = 0; i < no; i++)
-			addUsedEnergy( Energy.EARTH);
-		for( int i = 0; i < active.getEarth(); i++)
-			addEnergy( Energy.EARTH);
-		
-		no = max.getFire() - active.getFire();
-		for( int i = 0; i < no; i++)
-			addUsedEnergy( Energy.FIRE);
-		for( int i = 0; i < active.getFire(); i++)
-			addEnergy( Energy.FIRE);
-		
-		no = max.getWater() - active.getWater();
-		for( int i = 0; i < no; i++)
-			addUsedEnergy( Energy.WATER);
-		for( int i = 0; i < active.getWater(); i++)
-			addEnergy( Energy.WATER);
-		
-		no = max.getPure() - active.getPure();
-		for( int i = 0; i < no; i++) {
-			addUsedEnergy( Energy.PURE);
-		}
-		for( int i = 0; i < active.getPure(); i++) {
-			addEnergy( Energy.PURE);
+		if( o instanceof Player) {
+			
+			Player p = (Player)o;
+			
+			life.setText( "" + p.getHealth());
+			update( getGraphics());
 		}
 		
-		update( getGraphics());
+		else if( o instanceof EnergyPalette) {
+			
+			System.out.println( "portals online");
+			clear();
+			EnergyPalette palette = (EnergyPalette)o;
+			
+			EnergySet max = palette.getMaxEnergies();
+			EnergySet active = palette.getActiveEnergies();
+			int no = 0;
+			
+			no = max.getAir() - active.getAir();
+			for( int i = 0; i < no; i++)
+				addUsedEnergy( Energy.AIR);
+			for( int i = 0; i < active.getAir(); i++)
+				addEnergy( Energy.AIR);
+			
+			no = max.getEarth() - active.getEarth();
+			for( int i = 0; i < no; i++)
+				addUsedEnergy( Energy.EARTH);
+			for( int i = 0; i < active.getEarth(); i++)
+				addEnergy( Energy.EARTH);
+			
+			no = max.getFire() - active.getFire();
+			for( int i = 0; i < no; i++)
+				addUsedEnergy( Energy.FIRE);
+			for( int i = 0; i < active.getFire(); i++)
+				addEnergy( Energy.FIRE);
+			
+			no = max.getWater() - active.getWater();
+			for( int i = 0; i < no; i++)
+				addUsedEnergy( Energy.WATER);
+			for( int i = 0; i < active.getWater(); i++)
+				addEnergy( Energy.WATER);
+			
+			no = max.getPure() - active.getPure();
+			for( int i = 0; i < no; i++) {
+				addUsedEnergy( Energy.PURE);
+			}
+			for( int i = 0; i < active.getPure(); i++) {
+				addEnergy( Energy.PURE);
+			}
+			
+			update( getGraphics());
+			revalidate();
+			repaint();
+		}
 	}
 }

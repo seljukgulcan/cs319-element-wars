@@ -62,7 +62,6 @@ public class BoardPanel extends JPanel implements Observer{
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS));
 		setPreferredSize( SIZE);
 		setMaximumSize( getPreferredSize());
-		//setBackground( Color.BLACK);
 		setBackground( PlaygroundConstants.background);
 		
 		imagesPanel = new JPanel( new GridLayout( 1, 8, 10, 0));

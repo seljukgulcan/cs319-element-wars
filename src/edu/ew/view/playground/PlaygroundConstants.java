@@ -1,6 +1,7 @@
 package edu.ew.view.playground;
 
 import java.awt.Color;
+import java.awt.Font;
 
 /**
  * 
@@ -10,4 +11,5 @@ import java.awt.Color;
 public class PlaygroundConstants {
 
 	public static Color background = Color.WHITE;
+	public static Font bigFont = new Font("Verdana", Font.PLAIN, 20);
 }

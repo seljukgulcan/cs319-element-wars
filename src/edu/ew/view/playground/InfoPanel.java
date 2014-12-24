@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import edu.ew.controller.ControllerConnector;
 import edu.ew.view.MainFrame;
 import edu.ew.view.PreparationPanel;
 import edu.ew.view.ViewConstants;
@@ -23,6 +24,7 @@ import edu.ew.view.ViewConstants;
 public class InfoPanel extends JPanel {
 	
 	private JButton quitButton;
+	private JButton endTurnButton;
 	
 	private static int TOP_GAP = 10;
 	private static Dimension SIZE = new Dimension( 
@@ -41,8 +43,19 @@ public class InfoPanel extends JPanel {
 		quitButton.setFont( ViewConstants.buttonFont);
 		quitButton.addActionListener( new QuitButtonListener());
 		
+		endTurnButton = new JButton( "End Turn");
+		endTurnButton.setFont( ViewConstants.buttonFont);
+		endTurnButton.addActionListener( new EndTurnButtonListener());
+		
+		JPanel menu = new JPanel();
+		menu.setLayout( new BoxLayout( menu, BoxLayout.X_AXIS));
+		menu.add( Box.createRigidArea( new Dimension( 5, 0)));
+		menu.add( quitButton);
+		menu.add( endTurnButton);
+		
 		add( Box.createRigidArea( new Dimension( 0, TOP_GAP)));
-		add( quitButton);
+		add( menu);
+		
 	}
 	
 	public class QuitButtonListener implements ActionListener {
@@ -53,6 +66,15 @@ public class InfoPanel extends JPanel {
 			// TODO:End game
 			MainFrame frame = ((MainFrame) SwingUtilities.getWindowAncestor( InfoPanel.this));
 			frame.changePanel( new PreparationPanel());
+		}
+	}
+	
+	public class EndTurnButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			ControllerConnector.endTurn();
 		}
 	}
 }

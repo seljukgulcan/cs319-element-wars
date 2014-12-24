@@ -2,6 +2,7 @@ package edu.ew.controller;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 import edu.ew.model.*;
 import edu.ew.model.Character;
@@ -101,6 +102,14 @@ public class GameManager extends Manager{
 	public void endTurn() {
 		
 		model.endTurn();
+		turnManager.startTurn();
+		
+		//Passive AI
+		if( model.turnOf() == Side.BLACK) {
+			
+			model.endTurn();
+			turnManager.startTurn();
+		}
 	}
 
 	public boolean canPlay(int cardChoice) {
@@ -157,5 +166,10 @@ public class GameManager extends Manager{
 	public Board getBoard() {
 
 		return model.getBoard();
+	}
+
+	public Observable getDeck(Side side) {
+		
+		return model.getPlayer(side).getDeck();
 	}
 }

@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @author Selcuk Gulcan
  * @see CardPile
  */
-public class Deck extends CardPile {
+public class Deck extends CardPile{
 	
 	private String id;
 	
