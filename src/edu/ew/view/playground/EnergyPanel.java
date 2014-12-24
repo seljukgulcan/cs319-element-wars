@@ -138,6 +138,7 @@ public class EnergyPanel extends JPanel implements Observer{
 		
 		public void set( Energy energy) {
 			
+			setBackground( Color.white);
 			full = true;
 			removeAll();
 			switch (energy) {
