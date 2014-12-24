@@ -56,6 +56,16 @@ public class ViewConstants {
 	public static ImageIcon water;
 	public static ImageIcon trivial;
 	
+	public static ImageIcon airBig;
+	public static ImageIcon earthBig;
+	public static ImageIcon fireBig;
+	public static ImageIcon waterBig;
+	public static ImageIcon pureBig;
+	
+	public static ImageIcon life;
+	public static ImageIcon cardBack;
+	public static ImageIcon cardBackBig;
+	
 	public static void initialize() throws IOException {
 		
 		ViewConstants.air = new ImageIcon( ImageIO.read(new File( "assets/images/air.png")));
@@ -63,5 +73,15 @@ public class ViewConstants {
 		ViewConstants.fire = new ImageIcon( ImageIO.read(new File( "assets/images/fire.png")));
 		ViewConstants.water = new ImageIcon( ImageIO.read(new File( "assets/images/water.png")));
 		ViewConstants.trivial = new ImageIcon( ImageIO.read(new File( "assets/images/trivial.png")));
+		
+		ViewConstants.airBig = new ImageIcon( ImageIO.read(new File( "assets/images/air-big.png")));
+		ViewConstants.earthBig = new ImageIcon( ImageIO.read(new File( "assets/images/earth-big.png")));
+		ViewConstants.fireBig = new ImageIcon( ImageIO.read(new File( "assets/images/fire-big.png")));
+		ViewConstants.waterBig = new ImageIcon( ImageIO.read(new File( "assets/images/water-big.png")));
+		ViewConstants.pureBig = new ImageIcon( ImageIO.read(new File( "assets/images/pure-big.png")));
+		
+		ViewConstants.life = new ImageIcon( ImageIO.read(new File( "assets/images/life.png")));
+		ViewConstants.cardBack = new ImageIcon( ImageIO.read(new File( "assets/images/cardback.png")));
+		ViewConstants.cardBackBig = new ImageIcon( ImageIO.read(new File( "assets/images/cardback-big.png")));
 	}
 }

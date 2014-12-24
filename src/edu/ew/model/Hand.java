@@ -2,6 +2,7 @@ package edu.ew.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
 
 /**
  * TODO:Add description
@@ -10,7 +11,7 @@ import java.util.Iterator;
  *
  */
 
-public class Hand {
+public class Hand extends Observable{
 
 	private ArrayList<Card> cards;
 	
@@ -22,16 +23,27 @@ public class Hand {
 	public void add( Card card) {
 		
 		cards.add( card);
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void remove( Card card) {
 		
 		cards.remove( card);
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void remove( int index) {
 		
 		cards.remove( index);
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public Iterator<Card> iterator() {
+		
+		return cards.iterator();
 	}
 
 	//TRIVIAL METHODS

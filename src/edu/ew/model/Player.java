@@ -1,12 +1,14 @@
 package edu.ew.model;
 
+import java.util.Observable;
+
 /**
  * Represents a player of the game
  * 
  * @author Selcuk Gulcan
  * TODO: Add description
  */
-public class Player {
+public class Player extends Observable{
 	
 	public static enum Side { WHITE, BLACK};
 
@@ -36,7 +38,7 @@ public class Player {
 	
 	public void consume( EnergySet cost) {
 		
-		energyPalette.getActiveEnergies().consume( cost);
+		energyPalette.consume( cost);
 	}
 	
 	public void shuffleDeck() {
@@ -76,6 +78,11 @@ public class Player {
 		return energyPalette.getActiveEnergies().canPayWithConversion( card.cost);
 	}
 	
+	public void convert(EnergySet cost) {
+		
+		energyPalette.convert( cost);
+	}
+	
 	//TRIVIAL METHODS
 	public Deck getDeck() {
 		return deck;
@@ -91,6 +98,8 @@ public class Player {
 	
 	public void setHealth( int health) {
 		this.health = health;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public int getHealth() {

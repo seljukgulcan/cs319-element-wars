@@ -230,9 +230,9 @@ public class EnergySet {
 		//Assuming this energyset can pay other.
 		air -= other.getAir();
 		earth -= other.getEarth();
-		fire -= other.getEarth();
-		water -= other.getEarth();
-		pure -= other.getEarth();
+		fire -= other.getFire();
+		water -= other.getWater();
+		pure -= other.getPure();
 		
 		int needToPay = other.getTrivial();
 		if( trivial >= needToPay) {
@@ -300,8 +300,44 @@ public class EnergySet {
 	
 	public boolean canPayWithConversion( EnergySet other) {
 		
-		//TODO: complete method
-		return false;
+		int needToConvert = 0;
+		int extra = 0;
+		
+		if( other.getPure() >= getPure())
+			return false;
+		
+		if( getPure() == 0)
+			return false;
+		
+		extra = getPure() - other.getPure() - 1;
+		
+		if( other.getAir() > getAir())
+			needToConvert += other.getAir() - getAir();
+		else
+			extra += getAir() - other.getAir();
+		
+		if( other.getEarth() > getEarth())
+			needToConvert += other.getEarth() - getEarth();
+		else
+			extra += getEarth() - other.getEarth();
+		
+		if( other.getFire() > getFire())
+			needToConvert += other.getFire() - getFire();
+		else
+			extra += getFire() - other.getFire();
+		
+		if( other.getWater() > getWater())
+			needToConvert += other.getWater() - getWater();
+		else
+			extra += getWater() - other.getWater();
+		
+		if( needToConvert > 1)
+			return false;
+		
+		if( extra < other.getTrivial())
+			return false;
+		
+		return true;
 	}
 	
 	public int getConvertCost( EnergySet other) {
@@ -310,10 +346,37 @@ public class EnergySet {
 		return 0;
 	}
 	
-	public int convert( EnergySet other) {
+	public Energy convert( EnergySet other) {
+		//Assumption energyset can be converted with 1 pure energy
 		
-		//TODO: complete method
-		return 0;
+		if( getAir() < other.getAir()) {
+			
+			pure--;
+			air++;
+			return Energy.AIR;
+		}
+		
+		else if( getEarth() < other.getEarth()) {
+			
+			pure--;
+			earth++;
+			return Energy.EARTH;
+		}
+		else if( getFire() < other.getFire()) {
+			
+			pure--;
+			fire++;
+			return Energy.FIRE;
+		}
+		
+		else if( getWater() < other.getWater()) {
+			
+			pure--;
+			water++;
+			return Energy.WATER;
+		}
+		
+		return Energy.PURE;
 	}
 	
 	public EnergySet copy() {
@@ -331,5 +394,25 @@ public class EnergySet {
 				+ ", " + trivial + "]";
 		
 		return stringToReturn;
+	}
+
+	public int getEnergy(Energy converted) {
+		
+		switch( converted) {
+		case AIR:
+			return getAir();
+		case EARTH:
+			return getEarth();
+		case FIRE:
+			return getFire();
+		case PURE:
+			return getPure();
+		case TRIVIAL:
+			return getTrivial();
+		case WATER:
+			return getWater();
+		}
+		
+		return -1;
 	}
 }

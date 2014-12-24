@@ -15,7 +15,7 @@ public class Game extends Observable{
 	/*private static final String DEFAULT_WHITE_NAME = "Yin";
 	private static final String DEFAULT_BLACK_NAME = "Yang";*/
 	private static final int DEF_HEALTH = 20;
-	private static final int STARTING_HAND_SIZE = 5;
+	private static final int STARTING_HAND_SIZE = 3;
 	
 	private Player playerWhite;
 	private Player playerBlack;

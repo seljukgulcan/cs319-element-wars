@@ -24,7 +24,7 @@ public class Tester {
 
 	public static void main( String[] args) throws FileNotFoundException, CorruptedFileException, UnsupportedEncodingException {
 		
-		Deck test = DeckIO.importDeck( "earth-fire");		
+		/*Deck test = DeckIO.importDeck( "earth-fire");		
 		System.out.println( test);
 		test.setId( "new-earth-fire");
 		test.add( CardImporter.loadCard( 1));
@@ -35,7 +35,7 @@ public class Tester {
 		Deck test2 = DeckIO.importDeck( "sth/new-earth-fire");
 		System.out.println( test2);
 		
-		System.exit( 0);
+		System.exit( 0);*/
 		
 		Scanner scanner = new Scanner( System.in);
 		echo( "Welcome to the Element Wars Game");
@@ -76,8 +76,8 @@ public class Tester {
 					System.out.println( "Select an empty position [0,7]");
 					posChoice = scanner.nextInt();
 					
-					if( !controller.playCard( cardChoice, posChoice))
-						System.out.println( "Board position is wrong");
+					/*if( !controller.playCard( cardChoice, posChoice))
+						System.out.println( "Board position is wrong");*/
 				}
 				
 				else {

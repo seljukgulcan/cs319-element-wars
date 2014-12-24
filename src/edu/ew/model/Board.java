@@ -2,6 +2,7 @@ package edu.ew.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
 
 import edu.ew.model.Player.Side;
 
@@ -11,7 +12,7 @@ import edu.ew.model.Player.Side;
  * @author Selcuk Gulcan
  *
  */
-public class Board {
+public class Board extends Observable{
 
 	public static final int SIZE = 8;
 	
@@ -40,6 +41,8 @@ public class Board {
 			return false;
 		
 		getSide( side).set( position, character);
+		setChanged();
+		notifyObservers();
 		return true;
 	}
 	
@@ -55,6 +58,8 @@ public class Board {
 			return false;
 		
 		getSide( side).set( position, null);
+		setChanged();
+		notifyObservers();
 		return true;
 	}
 	

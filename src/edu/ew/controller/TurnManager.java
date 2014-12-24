@@ -17,13 +17,14 @@ public class TurnManager extends Manager{
 	
 	public void startTurn() {
 		
+		model.getPlayer().getEnergyPalette().fillEnergies();
+		model.getPlayer().gainEnergy();
+		model.getPlayer().setNoOfConvert( 1);
 		playDrawPhase();
 	}
 	
 	public void playDrawPhase() {
 		
-		model.getPlayer().getEnergyPalette().fillEnergies();
-		model.getPlayer().gainEnergy();
 		model.getPlayer().draw();
 	}
 	

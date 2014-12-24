@@ -9,14 +9,16 @@ import java.util.Observable;
  */
 public class Character extends Observable{
 
+	private int id;
 	private String name;
 	private int attack;
 	private int defence;
 	private int health;
 	private Effect effect;
 	
-	public Character( String name, int attack, int health) {
+	public Character( int id, String name, int attack, int health) {
 		
+		setId( id);
 		setName( name);
 		setAttack( attack);
 		setHealth( health);
@@ -25,6 +27,7 @@ public class Character extends Observable{
 	
 	public Character( CharacterCard card) {
 		
+		setId( card.getId());
 		setName( card.getName());
 		setAttack( card.getAttack());
 		setHealth( card.getHealth());
@@ -72,6 +75,14 @@ public class Character extends Observable{
 		this.effect = effect;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		

@@ -23,14 +23,7 @@ public class CardViewPanel extends JPanel {
 		setBackground( ViewConstants.backgroundColor);
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS));
 		
-		BufferedImage myPicture = null;
-		try {
-			myPicture = ImageIO.read(new File( "assets/card-images/1.png"));
-		} catch (IOException e) {
-			giveWarning();
-			e.printStackTrace();
-		}
-		JLabel picture = new JLabel(new ImageIcon(myPicture));
+		JLabel picture = new JLabel( ViewConstants.cardBackBig);
 		add(picture);
 	}
 	

@@ -29,12 +29,16 @@ public class EnergyPalette extends Observable{
 	public void fillEnergies() {
 		
 		activeEnergies = maxEnergies.copy();
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void addPureEnergy() {
 		
 		maxEnergies.setEnergy( Energy.PURE, maxEnergies.getPure() + 1);
 		fillEnergies();
+		setChanged();
+		notifyObservers();
 	}
 	
 	//Getter & Setter Methods
@@ -46,6 +50,8 @@ public class EnergyPalette extends Observable{
 	public void setMaxEnergies( EnergySet maxEnergies) {
 		
 		this.maxEnergies = maxEnergies;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public EnergySet getActiveEnergies() {
@@ -56,6 +62,8 @@ public class EnergyPalette extends Observable{
 	public void setActiveEnergies( EnergySet activeEnergies) {
 		
 		this.activeEnergies = activeEnergies;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public String toString() {
@@ -66,5 +74,26 @@ public class EnergyPalette extends Observable{
 		stringToReturn += maxEnergies.toString();
 		
 		return stringToReturn;		
+	}
+
+	public void consume(EnergySet cost) {
+		
+		activeEnergies.consume( cost);
+		/*System.out.println( "after consume");
+		System.out.println( activeEnergies);
+		System.out.println( maxEnergies);*/
+		setChanged();
+		notifyObservers();
+	}
+
+	public void convert(EnergySet cost) {
+		
+		Energy converted = maxEnergies.convert( cost);
+		activeEnergies.setPure( activeEnergies.getPure() - 1);
+		activeEnergies.setEnergy( converted, activeEnergies.getEnergy( converted) + 1);
+		/*System.out.println( activeEnergies);
+		System.out.println( maxEnergies);*/
+		setChanged();
+		notifyObservers();
 	}
 }

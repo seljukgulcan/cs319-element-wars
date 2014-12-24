@@ -3,6 +3,7 @@ package edu.ew.view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -13,7 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import edu.ew.controller.ControllerConnector;
+import edu.ew.model.CorruptedFileException;
 import edu.ew.model.DeckIO;
+import edu.ew.view.playground.PlaygroundPanel;
 
 @SuppressWarnings("serial")
 public class PreparationPanel extends CenteredBoxPanel {
@@ -28,6 +32,7 @@ public class PreparationPanel extends CenteredBoxPanel {
 		
 		//Initializations
 		nameField = new JTextField();
+		nameField.setText( ControllerConnector.getAccountName());
 		nameField.setPreferredSize( ViewConstants.preferredTextField);
 		nameField.setMaximumSize( nameField.getPreferredSize() );
 		
@@ -49,12 +54,24 @@ public class PreparationPanel extends CenteredBoxPanel {
 			if( !names.get( i).equals( "Default"))
 				deckSelect.addItem( names.get(i));
 		}
+		deckSelect.setSelectedItem( ControllerConnector.getDeckName());
 		deckSelect.setPreferredSize( ViewConstants.preferredTextField);
 		deckSelect.setMaximumSize( deckSelect.getPreferredSize() );
 		
 		opponentSelect = new JComboBox<String>();
 		opponentSelect.setFont( ViewConstants.buttonFont);
 		opponentSelect.addItem( "Passive AI");
+		opponentSelect.addItem( "Dump AI");
+		
+		String aiName = ControllerConnector.getAIName();
+		for( int i = 0; i < opponentSelect.getComponentCount(); i++) {
+			
+			if( opponentSelect.getItemAt( i).toString().equals( aiName)) {
+				
+				opponentSelect.setSelectedIndex( i);
+				break;
+			}
+		}
 		opponentSelect.setPreferredSize( ViewConstants.preferredTextField);
 		opponentSelect.setMaximumSize( opponentSelect.getPreferredSize() );
 		
@@ -86,19 +103,24 @@ public class PreparationPanel extends CenteredBoxPanel {
 	
 	public class PlayGameListener implements ActionListener {
 
-		int counter;
-		
-		public PlayGameListener() {
-			
-			counter = 1;
-		}
-		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
-			System.out.println( "Test " + counter);
-			counter++;
-			//TODO: Complete Method
+			String name, deckName, aiName;
+			name = nameField.getText();
+			deckName = deckSelect.getSelectedItem().toString();
+			aiName = opponentSelect.getSelectedItem().toString();
+			
+			ControllerConnector.setAccount( name, deckName, aiName);
+			try {
+				ControllerConnector.startGame();
+			} catch (FileNotFoundException | CorruptedFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			MainFrame frame = ((MainFrame) SwingUtilities.getWindowAncestor( PreparationPanel.this));
+			frame.changePanel( new PlaygroundPanel());
 		}
 	}
 }

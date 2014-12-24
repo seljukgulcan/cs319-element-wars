@@ -30,18 +30,4 @@ public class MainFrame extends JFrame {
 		add( panel);
 		pack();
 	}
-	
-	public static void main( String args[]) {
-		
-		try {
-			ViewConstants.initialize();
-		} catch (Exception e) {
-			
-			System.out.println( "Initialization failed because some files are corrupted.");
-			e.printStackTrace();
-			System.exit(0);
-		}
-		MainFrame a = new MainFrame();
-	    a.setVisible( true);
-	}
 }

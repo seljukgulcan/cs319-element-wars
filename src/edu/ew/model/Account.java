@@ -11,34 +11,37 @@ import edu.ew.model.Player.Side;
  *	TODO: Add Description
  */
 public class Account {
-	
-	private static final String DEFAULT_WHITE_NAME = "Yin";
 
 	private String 	name;
 	private Deck	deck;
+	private String  aiName;
 	
 	public Account() throws FileNotFoundException, CorruptedFileException {
 		
-		setDeck( DeckIO.importDeck( "Default"));
-		setName( DEFAULT_WHITE_NAME);
+		setName( Setting.getName());
+		setDeck( DeckIO.importDeck( Setting.getDeckName()));
+		setAIName( Setting.getAIName());
 	}
 	
 	public Account( String name) throws FileNotFoundException, CorruptedFileException {
 		
-		setDeck( DeckIO.importDeck( "Default"));
+		setDeck( DeckIO.importDeck( Setting.getDeckName()));
 		setName( name);
+		setAIName( Setting.getAIName());
 	}
 	
-	public Account( Deck deck) {
+	public Account( Deck deck) throws FileNotFoundException {
 		
 		setDeck( deck);
-		setName( DEFAULT_WHITE_NAME);
+		setName( Setting.getName());
+		setAIName( Setting.getAIName());
 	}
 	
-	public Account( String name, Deck deck) {
+	public Account( String name, Deck deck) throws FileNotFoundException {
 		
 		setDeck( deck);
 		setName( name);
+		setAIName( Setting.getAIName());
 	}
 	
 	public Player createPlayer( Side side) {
@@ -54,6 +57,11 @@ public class Account {
 	public Deck getDeck() {
 		return deck;
 	}
+	
+	public String getAIName() {
+		
+		return aiName;
+	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -61,5 +69,10 @@ public class Account {
 
 	public void setDeck(Deck deck) {
 		this.deck = deck;
+	}
+	
+	public void setAIName( String aiName) {
+		
+		this.aiName = aiName;
 	}
 }
