@@ -91,7 +91,7 @@ public class Character extends Observable{
 		this.id = id;
 	}
 
-	public boolean isCanAttack() {
+	public boolean getCanAttack() {
 		return canAttack;
 	}
 

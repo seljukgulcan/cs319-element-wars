@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import edu.ew.model.*;
+import edu.ew.model.Character;
 import edu.ew.model.Player.Side;
 import edu.ew.view.MainFrame;
 import edu.ew.view.ViewConstants;
@@ -128,5 +129,10 @@ public class ControllerConnector {
 	public static void resign(Side side) {
 		
 		controller.resign( side);
+	}
+
+	public static boolean canAttack(Character character) {
+		
+		return controller.canAttack( character);
 	}
 }

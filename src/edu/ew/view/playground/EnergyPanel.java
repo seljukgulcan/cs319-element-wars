@@ -180,7 +180,6 @@ public class EnergyPanel extends JPanel implements Observer{
 		
 		else if( o instanceof EnergyPalette) {
 			
-			System.out.println( "portals online");
 			clear();
 			EnergyPalette palette = (EnergyPalette)o;
 			

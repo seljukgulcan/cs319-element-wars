@@ -18,6 +18,7 @@ public class TurnManager extends Manager{
 	public void startTurn() {
 		
 		model.getPlayer().getEnergyPalette().fillEnergies();
+		model.getBoard().prepareForBattle( model.turnOf());
 		model.getPlayer().gainEnergy();
 		model.getPlayer().setNoOfConvert( 1);
 		playDrawPhase();

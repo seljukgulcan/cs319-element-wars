@@ -177,4 +177,9 @@ public class GameManager extends Manager{
 		
 		model.resign( side);
 	}
+
+	public boolean canAttack(Character character) {
+		
+		return character.getCanAttack();
+	}
 }

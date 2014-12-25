@@ -63,9 +63,4 @@ public class CharacterCard extends Card {
 		
 		return stringToReturn;
 	}
-	
-	/*public void speak() {
-		
-		System.out.println( "echo");
-	}*/
 }

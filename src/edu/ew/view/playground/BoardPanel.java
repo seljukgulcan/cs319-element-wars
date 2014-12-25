@@ -1,6 +1,7 @@
 package edu.ew.view.playground;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import edu.ew.controller.ControllerConnector;
 import edu.ew.model.Character;
 
 import javax.imageio.ImageIO;
@@ -180,7 +182,15 @@ public class BoardPanel extends JPanel implements Observer{
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			
+			if( side == Side.WHITE) {
+				
+				boolean attack = character.getCanAttack();
+				if( attack && PlaygroundPanel.attacker == null) {
+					
+					PlaygroundPanel.attacker = character;
+					//PlaygroundPanel.attackCursor();
+				}
+			}
 		}
 	}
 }

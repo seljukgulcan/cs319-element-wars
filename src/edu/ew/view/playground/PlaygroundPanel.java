@@ -25,6 +25,8 @@ public class PlaygroundPanel extends JPanel {
 	private EnergyPanel whiteEnergyPanel, blackEnergyPanel;
 	private BoardPanel whiteBoardPanel, blackBoardPanel;
 	public static CardViewPanel cardViewPanel;
+	public static edu.ew.model.Character attacker;
+	
 	private CenteredBoxPanel rightPanel;
 	
 	public PlaygroundPanel() {
@@ -38,6 +40,7 @@ public class PlaygroundPanel extends JPanel {
 		blackEnergyPanel = new EnergyPanel();
 		rightPanel = new CenteredBoxPanel();
 		cardViewPanel = new CardViewPanel();
+		attacker = null;
 		
 		//Size, Background and Layout
 		setLayout( new BorderLayout());
