@@ -55,6 +55,8 @@ public class ControllerConnector {
 	
 	/**
 	 * Gets hand from deck
+	 * 
+	 * @param side
 	 */
 	public static Hand getHand( Side side) {
 
@@ -139,6 +141,8 @@ public class ControllerConnector {
 
 	/**
 	 * Creates frames for visualization of game
+	 * 
+	 * @param side
 	 */
 	public static EnergyPalette getEnergyPalette(Side side) {
 		
@@ -147,6 +151,9 @@ public class ControllerConnector {
 
 	/**
 	 * Checks whether the card is played or not
+	 * 
+	 * @param card
+	 * @param side
 	 * 
 	 * @return true if card is played
 	 */
@@ -158,6 +165,9 @@ public class ControllerConnector {
 	/**
 	 * When player selects his hand, he may want to get rid of some card/s
 	 * 	this method handles this situation
+	 * 
+	 * @param side
+	 * @param card
 	 */
 	public static void discard(Card card, Side side) {
 		
@@ -175,6 +185,8 @@ public class ControllerConnector {
 
 	/**
 	 * Gets deck for player to use
+	 * 
+	 * @param side
 	 */
 	public static Observable getDeck(Side side) {
 		
@@ -193,6 +205,8 @@ public class ControllerConnector {
 	/**
 	 * When player thinks that he is beaten, he resigns and ends the game
 	 * 	in which case he loses
+	 * 
+	 * @param side
 	 */
 	public static void resign(Side side) {
 		
