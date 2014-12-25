@@ -9,10 +9,11 @@ import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
 /**
- * 
- * TODO: Add description
+ * This class gets cards to decks
  * 
  * @author Selcuk Gulcan
+ * @author Serdar Demirkol
+ * @author Umut Hicyilmaz
  *
  */
 public class CardImporter {
@@ -36,6 +37,11 @@ public class CardImporter {
 		return toReturn;
 	}
 	
+	/**
+	 * Gets all cards to deck
+	 * 
+	 * @exception java.io.FileNotFoundException if wrong file argument was passed
+	 */
 	public static Deck loadAllCards() throws FileNotFoundException {
 		
 		Deck deck = new Deck();
@@ -52,6 +58,13 @@ public class CardImporter {
 		return deck;
 	}
 	
+	/**
+	 * Loads cards according to their id
+	 * 
+	 * @param id
+	 * 
+	 * @exception java.io.FileNotFoundException if wrong file argument was passed
+	 */
 	public static Card loadCard( int id) throws FileNotFoundException {
 		
 		//Load the file

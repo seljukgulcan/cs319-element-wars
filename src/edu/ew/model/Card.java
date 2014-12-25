@@ -6,6 +6,8 @@ import java.util.Observable;
  * This class represents single cards.
  * 
  * @author Selcuk Gulcan
+ * @author Serdar Demirkol
+ * @author Umut Hicyilmaz
  *
  */
 public class Card extends Observable{

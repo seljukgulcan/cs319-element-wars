@@ -7,9 +7,11 @@ import java.util.Observable;
 import edu.ew.model.Player.Side;
 
 /**
- * TODO: Add description
+ * This class handles regulations concernig board
  * 
  * @author Selcuk Gulcan
+ * @author Serdar Demirkol
+ * @author Umut Hicyilmaz
  *
  */
 public class Board extends Observable{
@@ -21,6 +23,12 @@ public class Board extends Observable{
 	private ArrayList<Character> whiteSide;
 	private ArrayList<Character> blackSide;
 	
+	/**
+	 * Creates board with two players (wihte and black player)
+	 * 
+	 * @param whitePlayer
+	 * @param blackPlayer
+	 */
 	public Board( Player whitePlayer, Player blackPlayer) {
 		
 		setWhitePlayer( whitePlayer);
@@ -35,6 +43,13 @@ public class Board extends Observable{
 		}
 	}
 	
+	/**
+	 * Puts character to board with given parameters
+	 * 
+	 * @param character
+	 * @param position
+	 * @param side
+	 */
 	public boolean putCharacter( Character character, int position, Side side) {
 		
 		if( getSide( side).get( position) != null)
@@ -46,12 +61,25 @@ public class Board extends Observable{
 		return true;
 	}
 	
+	/**
+	 * Puts character from hand to board with given parameters
+	 * 
+	 * @param card
+	 * @param position
+	 * @param side
+	 */
 	public boolean putCharacter( CharacterCard card, int position, Side side) {
 		
 		Character character = card.createCharacter();
 		return putCharacter( character, position, side);
 	}
 	
+	/**
+	 * Removes character with given parameters
+	 * 
+	 * @param position
+	 * @param side
+	 */
 	public boolean removeCharacter( int position, Side side) {
 		
 		if( getSide( side).get( position) == null)
@@ -63,6 +91,11 @@ public class Board extends Observable{
 		return true;
 	}
 	
+	/**
+	 * Puts prepareForBattle tag on players indicating that it's their turn
+	 * 
+	 * @param side
+	 */
 	public void prepareForBattle( Side side) {
 		
 		Iterator<Character> it;
@@ -84,6 +117,13 @@ public class Board extends Observable{
 		}
 	}
 	
+	/**
+	 * Swaps characters
+	 * 
+	 * @param pos1
+	 * @param pos2
+	 * @param side
+	 */
 	public boolean swapCharacters( int pos1, int pos2, Side side) {
 		
 		ArrayList<Character> playerSide = getSide( side);
@@ -96,16 +136,33 @@ public class Board extends Observable{
 		return true;
 	}
 	
+	/**
+	 * Kills character if it's health is zero
+	 * 
+	 * @param position
+	 * @param side
+	 */
 	public void killCharacter( int position, Side side) {
 		
 		getSide( side).remove( position);
 	}
 	
+	/**
+	 * Gets character with given parameters
+	 * 
+	 * @param position
+	 * @param side
+	 */
 	public Character getCharacter( int position, Side side) {
 		
 		return getSide( side).get( position);
 	}
 	
+	/**
+	 * Puts characters in to a arrayList
+	 * 
+	 * @param side
+	 */
 	public ArrayList<Character> getSide( Side side) {
 
 		switch( side) {
@@ -120,23 +177,46 @@ public class Board extends Observable{
 			return null;
 		}
 	}
-
+	
+	/**
+	 * Gets whitePlayer
+	 * 
+	 * @return whitePlayer
+	 */
 	public Player getWhitePlayer() {
 		return whitePlayer;
 	}
-
+	
+	/**
+	 * Sets whitePlayer
+	 * 
+	 * @param whitePlayer
+	 */
 	public void setWhitePlayer(Player whitePlayer) {
 		this.whitePlayer = whitePlayer;
 	}
-
+	
+	/**
+	 * Gets blackPlayer
+	 * 
+	 * @return blackPlayer
+	 */
 	public Player getBlackPlayer() {
 		return blackPlayer;
 	}
-
+	
+	/**
+	 * Sets blackPlayer
+	 * 
+	 * @param blackPlayer
+	 */
 	public void setBlackPlayer(Player blackPlayer) {
 		this.blackPlayer = blackPlayer;
 	}
 	
+	/**
+	 * Method that turns iterations to strings
+	 */
 	@Override
 	public String toString() {
 		
