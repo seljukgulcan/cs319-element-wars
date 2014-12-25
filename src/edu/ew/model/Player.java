@@ -6,7 +6,7 @@ import java.util.Observable;
  * Represents a player of the game
  * 
  * @author Selcuk Gulcan
- * TODO: Add description
+ * 
  */
 public class Player extends Observable{
 	

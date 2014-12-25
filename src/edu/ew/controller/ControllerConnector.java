@@ -20,7 +20,6 @@ import edu.ew.view.ViewConstants;
  */
 public class ControllerConnector {
 
-	//TODO: Complete the class.
 	private static GameManager controller;
 	
 	/**

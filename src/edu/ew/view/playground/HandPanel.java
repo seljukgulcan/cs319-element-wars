@@ -154,8 +154,7 @@ public class HandPanel extends JPanel implements Observer{
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			
-			boolean a = ControllerConnector.playCard( card, Side.WHITE);
-			System.out.println( a);
+			ControllerConnector.playCard( card, Side.WHITE);
 		}
 	}
 }

@@ -9,7 +9,7 @@ import java.awt.Component;
  * 
  * @author Selcuk Gulcan
  *
- * TODO: Add description
+ * 
  */
 @SuppressWarnings("serial")
 public class CenteredBoxPanel extends JPanel {

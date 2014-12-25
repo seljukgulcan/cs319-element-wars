@@ -6,7 +6,6 @@ public class CombatManager extends Manager {
 
 	public CombatManager(ModelConnector model) {
 		super(model);
-		// TODO Auto-generated constructor stub
 	}
 
 }

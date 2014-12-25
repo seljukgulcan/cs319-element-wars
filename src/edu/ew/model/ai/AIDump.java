@@ -8,7 +8,6 @@ public class AIDump extends AI {
 
 	public AIDump(Side side) throws FileNotFoundException, CorruptedFileException {
 		super(side);
-		// TODO Auto-generated constructor stub
 	}
 
 }

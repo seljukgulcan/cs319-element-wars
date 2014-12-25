@@ -5,7 +5,7 @@ import java.util.Observable;
 import edu.ew.model.Player.Side;
 
 /**
- * TODO: Add description
+ * 
  * 
  * @author Selcuk Gulcan
  *

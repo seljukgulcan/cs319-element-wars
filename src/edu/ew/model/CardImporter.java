@@ -87,7 +87,6 @@ public class CardImporter {
 		isSpell = cardJson.get( "is-spell").asBoolean();
 		cost = parseCost( cardJson.get( "cost").asArray());
 		
-		//TODO: Effect parser is not implemented.
 		effect = null;
 		JsonValue effectValue = cardJson.get( "effect");
 		if( effectValue == null)

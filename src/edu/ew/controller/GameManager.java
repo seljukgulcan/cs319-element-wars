@@ -147,7 +147,6 @@ public class GameManager extends Manager{
 		try {
 			model.getAccount().setDeck( DeckIO.importDeck( deckName));
 		} catch (FileNotFoundException | CorruptedFileException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.getAccount().setAIName( aiName);

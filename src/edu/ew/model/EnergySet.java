@@ -342,7 +342,6 @@ public class EnergySet {
 	
 	public int getConvertCost( EnergySet other) {
 		
-		//TODO: complete method
 		return 0;
 	}
 	
