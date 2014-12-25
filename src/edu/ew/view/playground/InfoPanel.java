@@ -1,5 +1,6 @@
 package edu.ew.view.playground;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,10 +8,12 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import edu.ew.controller.ControllerConnector;
+import edu.ew.model.Player.Side;
 import edu.ew.view.MainFrame;
 import edu.ew.view.PreparationPanel;
 import edu.ew.view.ViewConstants;
@@ -63,9 +66,14 @@ public class InfoPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
-			// TODO:End game
-			MainFrame frame = ((MainFrame) SwingUtilities.getWindowAncestor( InfoPanel.this));
-			frame.changePanel( new PreparationPanel());
+			int result = JOptionPane.showConfirmDialog((Component) null, "You'll lose the game. Are you sure","Resign and Quit", JOptionPane.YES_NO_OPTION);
+			
+			if( result == 0) {
+				
+				ControllerConnector.resign( Side.WHITE);
+				MainFrame frame = ((MainFrame) SwingUtilities.getWindowAncestor( InfoPanel.this));
+				frame.changePanel( new PreparationPanel());
+			}
 		}
 	}
 	

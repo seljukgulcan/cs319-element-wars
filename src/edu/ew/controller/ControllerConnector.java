@@ -124,4 +124,9 @@ public class ControllerConnector {
 		
 		controller.endTurn();
 	}
+
+	public static void resign(Side side) {
+		
+		controller.resign( side);
+	}
 }

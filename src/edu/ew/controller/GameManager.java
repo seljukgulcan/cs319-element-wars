@@ -172,4 +172,9 @@ public class GameManager extends Manager{
 		
 		return model.getPlayer(side).getDeck();
 	}
+
+	public void resign(Side side) {
+		
+		model.resign( side);
+	}
 }

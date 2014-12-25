@@ -63,6 +63,27 @@ public class Board extends Observable{
 		return true;
 	}
 	
+	public void prepareForBattle( Side side) {
+		
+		Iterator<Character> it;
+		if( side == Side.WHITE) {
+			
+			it = whiteSide.iterator();
+		}
+		
+		else {
+			
+			it = blackSide.iterator();
+		}
+		
+		while( it.hasNext()) {
+			
+			Character next = it.next();
+			if( next != null)
+				next.prepareForBattle();
+		}
+	}
+	
 	public boolean swapCharacters( int pos1, int pos2, Side side) {
 		
 		ArrayList<Character> playerSide = getSide( side);

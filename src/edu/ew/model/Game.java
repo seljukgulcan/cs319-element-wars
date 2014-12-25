@@ -23,26 +23,7 @@ public class Game extends Observable{
 	private Board board;
 	private boolean gameStarted;
 	private boolean gameEnded;
-	
-	/*public Game() {
-		
-		setPlayerWhite( new Player( DEFAULT_WHITE_NAME));
-		setPlayerBlack( new Player( DEFAULT_BLACK_NAME));
-		turnNo = 0;
-		board = new Board( playerWhite, playerBlack);
-		setGameStarted( false);
-		setGameEnded( false);
-	}
-	
-	public Game( String playerWhite, String playerBlack) {
-		
-		setPlayerWhite( new Player( playerWhite));
-		setPlayerBlack( new Player( playerBlack));
-		turnNo = 0;
-		board = new Board( this.playerWhite, this.playerBlack);
-		setGameStarted( false);
-		setGameEnded( false);
-	}*/
+	private Side winner;
 	
 	public Game( Player playerWhite, Player playerBlack) {
 		
@@ -52,6 +33,7 @@ public class Game extends Observable{
 		board = new Board( this.playerWhite, this.playerBlack);
 		setGameStarted( false);
 		setGameEnded( false);
+		winner = null;
 	}
 	
 	public boolean startGame() {
@@ -81,6 +63,13 @@ public class Game extends Observable{
 	public void endTurn() {
 		
 		turnNo++;
+	}
+	
+	public void resign(Side side) {
+		
+		gameEnded = true;
+		gameStarted = false;
+		winner = side == Side.WHITE ? Side.BLACK : Side.WHITE;
 	}
 
 	//TRIVIAL METHODS

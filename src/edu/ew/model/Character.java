@@ -15,6 +15,7 @@ public class Character extends Observable{
 	private int defence;
 	private int health;
 	private Effect effect;
+	private boolean canAttack;
 	
 	public Character( int id, String name, int attack, int health) {
 		
@@ -23,6 +24,7 @@ public class Character extends Observable{
 		setAttack( attack);
 		setHealth( health);
 		effect = null;
+		canAttack = false;
 	}
 	
 	public Character( CharacterCard card) {
@@ -32,6 +34,12 @@ public class Character extends Observable{
 		setAttack( card.getAttack());
 		setHealth( card.getHealth());
 		effect = null;
+		canAttack = false;
+	}
+	
+	public void prepareForBattle() {
+		
+		setCanAttack( true);
 	}
 
 	public String getName() {
@@ -81,6 +89,14 @@ public class Character extends Observable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isCanAttack() {
+		return canAttack;
+	}
+
+	public void setCanAttack(boolean canAttack) {
+		this.canAttack = canAttack;
 	}
 
 	@Override

@@ -172,6 +172,11 @@ public class ModelConnector {
 		return activeGame.isGameEnded();
 	}
 	
+	public void resign(Side side) {
+		
+		activeGame.resign( side);
+	}
+	
 	//TRIVIAL METHODS
 	public Account getAccount() {
 		return account;
